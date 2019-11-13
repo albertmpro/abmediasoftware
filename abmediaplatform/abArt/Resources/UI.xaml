@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                    xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=AlbertWin32
+                    xmlns:local="clr-namespace:abArt.Controls">
+                    
+                    
+                    
+    
+</ResourceDictionary>

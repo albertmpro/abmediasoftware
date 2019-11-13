@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=AlbertWin32"
+                    xmlns:art="clr-namespace:abArt.Controls"
+                    xmlns:local="clr-namespace:abArt">
+
+    <!--#region ViewModel-->
+    <local:ArtViewModel x:Key="viewModel" />
+
+    <!--#endregion-->
+    <!--#region Default Colors-->
+    <SolidColorBrush x:Key="abBackgroundBrush" Color="#ff333333" />
+    <SolidColorBrush x:Key="abForegroundBrush" Color="#ffffffff" />
+    <SolidColorBrush x:Key="abAccentBrush" Color="#ffBA1010" />
+    <SolidColorBrush x:Key="abAccentBrush2" Color="#ffE03232" />
+    <SolidColorBrush x:Key="abAccentBrush3" Color="#ff2F0A6A" />
+    <SolidColorBrush x:Key="abAccentBrush4" Color="#ff171776" />
+    <SolidColorBrush x:Key="abAccentBrush5" Color="#ff0000CC" />
+    <Color x:Key="abBackgroundColor">#ff333333</Color>
+    <Color x:Key="abForegroundColor">#ffffffff</Color>
+    <Color x:Key="abAccentColor1">#ffBA1010</Color>
+    <Color x:Key="abAccentColor2">#ffE03232</Color>
+    <Color x:Key="abAccentColor3">#ff2F0A6A</Color>
+    <Color x:Key="abAccentColor4">#ff171776</Color>
+    <Color x:Key="abAccentColor5">#ff0000CC</Color>
+        
+    <!--#endregion-->
+
+
+
+    <Style TargetType="c:ViewShell">
+        <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
+           <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
+    </Style>
+    <Style TargetType="TabControl">
+        <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
+    </Style>
+
+    <Style TargetType="c:DocumentTabItem">
+        <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
+    </Style>
+
+
+</ResourceDictionary>

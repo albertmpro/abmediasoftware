@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\abartboard.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\abartboard.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlbertWin32\AlbertWin32.csproj" />
+    <ProjectReference Include="..\Albert\Albert.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>..\..\..\AvalonEdit\ICSharpCode.AvalonEdit\bin\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Import Project="..\abmediaplatform\abmediaplatform.projitems" Label="Shared" />
+
+</Project>

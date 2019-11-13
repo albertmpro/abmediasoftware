@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d3460e5d-a4e4-44f9-8cd6-fe4effc2dc12</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ABCode</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)aanie.js" />
+    <None Include="$(MSBuildThisFileDirectory)albert.js" />
+    <None Include="$(MSBuildThisFileDirectory)apage.js" />
+    <None Include="$(MSBuildThisFileDirectory)flex.scss" />
+    <None Include="$(MSBuildThisFileDirectory)flexui.scss" />
+    <None Include="$(MSBuildThisFileDirectory)jalbert.js" />
+    <None Include="$(MSBuildThisFileDirectory)phppage.php" />
+    <None Include="$(MSBuildThisFileDirectory)wpcontent.php" />
+    <None Include="$(MSBuildThisFileDirectory)wpfooter.php" />
+    <None Include="$(MSBuildThisFileDirectory)wpfunctions.php" />
+    <None Include="$(MSBuildThisFileDirectory)wpheader.php" />
+    <None Include="$(MSBuildThisFileDirectory)wpindex.php" />
+    <None Include="$(MSBuildThisFileDirectory)wppage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)webpage.html" />
+    <Content Include="$(MSBuildThisFileDirectory)wpstyle.css" />
+  </ItemGroup>
+</Project>
