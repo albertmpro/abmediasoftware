@@ -9,7 +9,7 @@ namespace abArt.Controls
     /// <summary>
     /// Base Control for doing projects with this application 
     /// </summary>
-    public class ArtView: DocumentControl, IArtApp
+    public class ArtView: DocumentControl, IArtViewModel
     {
         #region Field's 
         //Grab the ViewModel from your resources 

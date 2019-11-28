@@ -9,7 +9,7 @@ namespace abArt.Controls
     /// <summary>
     /// Default Window Shell for this Application 
     /// </summary>
-    public class ArtShell: ViewShell, IArtApp
+    public class ArtShell: ViewShell, IArtViewModel
     {
         #region Field's 
         //Grab the ViewModel from your resources 

@@ -11,7 +11,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using abArt.Controls;
+using Albert.Win32;
 using Albert.Win32.Controls;
+using static Albert.Win32.MediaCv;
 using static Albert.Win32.XmlUtility;
 namespace abArt.View
 {
@@ -42,7 +44,23 @@ namespace abArt.View
             //Link WindowState to ViewModel 
             VM.WindowState = WindowState;
 
+            VM.OnMessage += onMessage;
+
+            //Send a Message 
+            VM.Message("Welcome to you the ArtBoard", false);
+
+
+
         }
-     
+
+
+        void onMessage(string _msg)
+        {
+            tbStatus.Text = _msg;
+            //Do an Animation
+            NotifyHide(tbStatus, 5);
+
+        }
+
     }
 }

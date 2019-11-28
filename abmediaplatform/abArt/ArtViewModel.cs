@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xml.Linq;
+using ICSharpCode.AvalonEdit;
 using static System.Convert;
 using static Albert.Win32.MediaCv;
 using static Albert.Win32.Win32IO;
@@ -42,21 +43,25 @@ namespace abArt
         /// A Tuple to handle Filters for saving and Loading files 
         /// </summary>
         /// <returns></returns>
-        public (string Text, string Ink, string Msg, string Png, string All) Filters()
+        public (string ArtBoard, string Msg,string Brand, string Png, string All) FilterTuple()
         {
-            //Text Filter 
-            var txt = MakeFilter("AB Text File", ".abtxt*");
-            //Ink Filter 
-            var ink = MakeFilter("AB Ink", ".abink");
+          
+            //ArtBoard Filter 
+            var art = MakeFilter("AB ArtBoard", ".abartboard");
+            
             //Msg Filter 
             var msg = MakeFilter("AB Msg", ".abmsg");
 
+            //Brand Filter 
+            var brand = MakeFilter("AB Brand", ".abbrand");
+
             //Png Filter 
-            var png = MakeFilter("Png Format(.png)", ".png");
+            var png = MakeFilter("Png Format", ".png");
 
-            var all = MakeFilter("All Files", ".");
+            //All Text Files 
+            var all = MakeFilter("All Formats", ".");
 
-            return (txt, ink, msg, png, all);
+            return ( art, msg,brand, png, all);
         }
 
 
@@ -155,7 +160,7 @@ namespace abArt
         /// <param name="_inkCanvas"></param>
         /// <param name="_fileName"></param>
         /// <returns></returns>
-        public (string FileName, FileInfo FileInfo) SaveArtBoardTuple(ArtBoard _inkCanvas, string _fileName)
+        public (string FileName, FileInfo FileInfo) SaveArtBoardTuple(DrawCanvas _inkCanvas, string _fileName)
         {
             //Save the Ink Strokes 
             SaveInkStrokes(_inkCanvas, _fileName);
@@ -164,8 +169,13 @@ namespace abArt
 
             return (_fileName, fileinfo);
         }
-
-        public (string FileName, FileInfo FileIffo) LoadArtBoardTuple(string _fileName, ArtBoard _inkcanvas)
+        /// <summary>
+        /// Load Artboard Tuple 
+        /// </summary>
+        /// <param name="_fileName"></param>
+        /// <param name="_inkcanvas"></param>
+        /// <returns></returns>
+        public (string FileName, FileInfo FileIffo) LoadArtBoardTuple(string _fileName, DrawCanvas _inkcanvas)
         {
             //Save the Ink Strokes 
             LoadInkStrokes(_inkcanvas, _fileName);
@@ -414,6 +424,42 @@ namespace abArt
 
 
         #region TextEdit
+        /// <summary>
+        /// Tuple to Export Text File  
+        /// </summary>
+        /// <param name="_filename"></param>
+        /// <param name="_txt"></param>
+        /// <returns></returns>
+        public (string FileName,FileInfo) ExportTextTuple(string _filename,TextBox _txt)
+        {
+            //Grab the Text 
+            var text = _txt.Text;
+            //Save the Text 
+            File.WriteAllText(_filename, text);
+            //Create the File Info 
+            var info = new FileInfo(_filename);
+            //Return your value's 
+            return (text, info);
+        }
+        /// <summary>
+        /// Tuple to Export TextFile 
+        /// </summary>
+        /// <param name="_filename"></param>
+        /// <param name="_txt"></param>
+        /// <returns></returns>
+        public (string FileName, FileInfo) ExportTextTuple(string _filename, TextEditor _txt)
+        {
+            //Grab the Text 
+            var text = _txt.Text;
+            //Save the Text 
+            File.WriteAllText(_filename, text);
+            //Create the File Info 
+            var info = new FileInfo(_filename);
+            //Return your value's 
+            return (text, info);
+        }
+
+
 
         #endregion
 

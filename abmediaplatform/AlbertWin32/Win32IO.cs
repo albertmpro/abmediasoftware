@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
 using Microsoft.Win32;
@@ -23,7 +19,17 @@ namespace Albert.Win32
 
 
 
-		#region Win32 DialogBoxes 
+		#region Win32 Dialog Boxes 
+        /// <summary>
+        /// Tuple to Quickly fill in Dialog Information 
+        /// </summary>
+        /// <param name="_title"></param>
+        /// <param name="_filter"></param>
+        /// <returns></returns>
+        public static (string Title,string Filter) DialogInfoTuple(string _title,string _filter)
+        {
+            return (_title, _filter);
+        }
 		
 		/// <summary>
 		/// Make a Quick Filter 
@@ -59,38 +65,26 @@ namespace Albert.Win32
 			}
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="_fn"></param>
-		/// <param name="_method"></param>
-		public static void SaveNewFolder( Action<SaveFileDialog, DirectoryInfo> _method)
-		{
-			var dialog = new SaveFileDialog();
-
-			if (dialog.ShowDialog() == true)
-			{
-				dialog.Title = "Select a Directory to Save in";
-				//grab the directory info 
-				var di = new DirectoryInfo(dialog.InitialDirectory);
-				_method.Invoke(dialog, di); //Run the method
-			}
-		}
-
+	
 		/// <summary>
 		/// A special task to speed up the OpenDialog Proecss 
 		/// </summary>
 		/// <param name="_title">Title of the Window</param>
 		/// <param name="_filter">Filter for the fileformats</param>
 		/// <param name="_method">(diloag class)The Method that will be used</param>
-		public static void OpenDialogTask(string _title, string _filter, Action<OpenFileDialog> _method)
+		public static void OpenDialogTask(string _title, string _filter, Action<OpenFileDialog,FileInfo> _method)
 		{
 
 			var dialog = new OpenFileDialog { Title = _title, Filter = _filter }; //Create a new dialog 
-			dialog.Multiselect = true; // Enable selecting multple vfiles  
+			
+            dialog.Multiselect = true; // Enable selecting multple vfiles  
+
 			if (dialog.ShowDialog() == true)
 			{
-				_method.Invoke(dialog); //Run the method
+                //Create the FileInfo 
+                var info = new FileInfo(dialog.FileName);
+                //Invoke the Action 
+				_method?.Invoke(dialog,info); //Run the method
 			}
 		}
 

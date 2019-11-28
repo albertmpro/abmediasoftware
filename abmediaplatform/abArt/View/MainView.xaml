@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=AlbertWin32" 
         xmlns:local="clr-namespace:abArt.Controls"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowState="Maximized"
         Title="abArtBoard" Icon="/Images/abartboard.png" Height="600" Width="960">
     <Grid Background="{StaticResource abBackgroundBrush}">
         <Grid.RowDefinitions>
@@ -16,6 +16,10 @@
 
 
         </TabControl>
+        <StatusBar Grid.Row="1">
+            <TextBlock Text="Status:" />
+            <TextBlock x:Name="tbStatus" />
+        </StatusBar>
 
     </Grid>
 </local:ArtShell>

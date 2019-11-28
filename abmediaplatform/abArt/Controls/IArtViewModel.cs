@@ -5,9 +5,9 @@ using System.Windows.Media;
 namespace abArt.Controls
 {
     /// <summary>
-    /// An Interface that helps keep the App consistant 
+    /// Interface the implments the default ViewModel of the Application 
     /// </summary>
-    internal interface IArtApp
+    internal interface IArtViewModel
     {
 
   

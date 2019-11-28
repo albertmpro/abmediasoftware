@@ -8,23 +8,25 @@ using System.Windows.Input;
 namespace Albert.Win32
 {
 	/// <summary>
-	/// A list of my Personal Commands 
+	/// A list of Commands used for Desktop Applications 
 	/// </summary>
 	public static class DesktopCommands
 	{
-		private static readonly RoutedUICommand runconsole, export, startview, about, options, saveas, quit, zoomin, zoomout,snips;
+		private static readonly RoutedUICommand import,runconsole, export, startview, about, options, saveas, quit, zoomin, zoomout,snips;
 
-		static DesktopCommands()
-		{
+        static DesktopCommands()
+        {
 
-			runconsole = new RoutedUICommand("RunConsole", "Runconsole", typeof(DesktopCommands));
-			runconsole.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control, "Ctrl+D"));
-			//Export Comand 
-			export = new RoutedUICommand("Export", "Export", typeof(DesktopCommands));
-			export.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control, "Ctrl+E"));
-			//StartView Command
-			startview = new RoutedUICommand("StartView", "StartView", typeof(DesktopCommands));
-			startview.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control | ModifierKeys.Shift, "Ctrl+Shift+N"));
+            import = CreateCommand("Import", typeof(DesktopCommands), Key.I, ModifierKeys.Control, "Ctrl+I");
+
+            runconsole = CreateCommand("RunConsole", typeof(DesktopCommands), Key.D, ModifierKeys.Control, "Ctrl+D");
+
+
+            //Export Comand 
+            export = CreateCommand("Export", typeof(DesktopCommands), Key.E, ModifierKeys.Control, "Ctrl+E");
+            //StartView Command
+            startview = CreateCommand("StartView", typeof(DesktopCommands), Key.N, ModifierKeys.Control | ModifierKeys.Shift, "Ctrl+Shift+N");
+
 
 			//About Command
 			about = new RoutedUICommand("About", "About", typeof(DesktopCommands));
@@ -34,9 +36,8 @@ namespace Albert.Win32
 			saveas = new RoutedUICommand("SaveAs", "SaveAs", typeof(DesktopCommands));
 			saveas.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Shift, "Ctrl+Shift+S"));
 
-			//Quit Commmand
-			quit = new RoutedUICommand("Quit", "Quit", typeof(DesktopCommands));
-			quit.InputGestures.Add(new KeyGesture(Key.Q, ModifierKeys.Control, "Ctrl+Q"));
+            //Quit Commmand
+            quit = CreateCommand("Quit", typeof(DesktopCommands), Key.Q, ModifierKeys.Control, "Ctrl+Q");
 
 			zoomin = new RoutedUICommand("ZoomIn", "ZoomIn", typeof(DesktopCommands));
 			zoomin.InputGestures.Add(new KeyGesture(Key.OemPlus, ModifierKeys.Control, "Ctrl+"));
@@ -53,32 +54,39 @@ namespace Albert.Win32
 		
 			
 		}
-		/// <summary>
-		/// Get RunConsole Command
-		/// </summary>
-		public static RoutedUICommand RunConsole
-		{
-			get { return runconsole; }
-		}
-		/// <summary>
-		/// Get the Export Command
-		/// </summary>
-		public static RoutedUICommand Export
-		{
-			get { return export; }
-		}
-		/// <summary>
-		/// Get the snips command
-		/// </summary>
-		public static RoutedUICommand Snips
-		{
-			get { return snips; }
-		}
+        /// <summary>
+        /// Method to Speed up Creating RoutedUICommand 
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <param name="_cmdType"></param>
+        /// <param name="_mainKey"></param>
+        /// <param name="_modifierKey"></param>
+        /// <param name="_cmdDisplay"></param>
+        /// <returns>RoutedUICommand</returns>
+        public static RoutedUICommand CreateCommand(string _name, Type _cmdType, Key _mainKey, ModifierKeys _modifierKey,string _cmdDisplay)
+        {
+            var cmd = new RoutedUICommand(_name, _name, _cmdType);
+            cmd.InputGestures.Add(new KeyGesture(_mainKey, _modifierKey, _cmdDisplay));
+            return cmd;
+        }
 
-	/// <summary>
-	/// Get the StartView Commands
-	/// </summary>
-		public static RoutedUICommand StartView
+        public static RoutedUICommand Import => import;
+        /// Get RunConsole Command
+        /// </summary>
+        public static RoutedUICommand RunConsole => runconsole;
+        /// <summary>
+        /// Get the Export Command
+        /// </summary>
+        public static RoutedUICommand Export => export;
+        /// <summary>
+        /// Get the snips command
+        /// </summary>
+        public static RoutedUICommand Snips => snips;
+
+        /// <summary>
+        /// Get the StartView Commands
+        /// </summary>
+        public static RoutedUICommand StartView
 		{
 			get
 			{
@@ -86,60 +94,23 @@ namespace Albert.Win32
 			}
 		}
 
-		public static RoutedUICommand Options
-		{
-			get
-			{
-				return options;
-			}
-		}
+        public static RoutedUICommand Options => options;
 
-		public static RoutedUICommand About
-		{
-			get
-			{
-				return about;
-			}
-		}
-		/// <summary>
-		/// Get the Save As Command
-		/// </summary>
-		public static RoutedUICommand SaveAs
-		{
-			get
-			{
-				return saveas;
-			}
+        public static RoutedUICommand About => about;
+        /// <summary>
+        /// Get the Save As Command
+        /// </summary>
+        public static RoutedUICommand SaveAs => saveas;
+        /// <summary>
+        /// Get the Quit Command 
+        /// </summary>
+        public static RoutedUICommand Quit => quit;
 
-		}
-		/// <summary>
-		/// Get the Quit Command 
-		/// </summary>
-		public static RoutedUICommand Quit
-		{
-			get
-			{
-				return quit;
-			}
-		}
+        public static RoutedUICommand ZoomIn => zoomin;
 
-		public static RoutedUICommand ZoomIn
-		{
-			get
-			{
-				return zoomin;
-			}
-		}
-
-		public static RoutedUICommand ZoomOut
-		{
-			get
-			{
-				return zoomout;
-			}
-		}
+        public static RoutedUICommand ZoomOut => zoomout;
 
 
-		
-	}
+
+    }
 }

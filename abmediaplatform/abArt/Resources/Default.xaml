@@ -32,15 +32,7 @@
         <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
            <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
     </Style>
-    <Style TargetType="TabControl">
-        <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
-    </Style>
 
-    <Style TargetType="c:DocumentTabItem">
-        <Setter Property="Background" Value="{StaticResource abBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{StaticResource abForegroundBrush}" />
-    </Style>
 
 
 </ResourceDictionary>
