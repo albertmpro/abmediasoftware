@@ -28,7 +28,7 @@ namespace Albert.Win32.Controls
 
         void Logic()
         {
-            //Run the OnLogic 
+            //Run the OnLogic Function 
             OnLogic();
         }
 

@@ -34,7 +34,7 @@ namespace abArt.View
 
         public override void OnLogic()
         {
-            tk.MessageBox.Show("Test Logic!");
+            //tk.MessageBox.Show("Test Logic!");
         }
 
         void Hyper_Click(object sender, RoutedEventArgs e)

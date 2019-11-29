@@ -39,6 +39,26 @@ namespace abArt
         #region Application Logic 
 
         #region Common 
+
+
+        /// <summary>
+        /// Tuple to export a png Image 
+        /// </summary>
+        /// <param name="_element">Element</param>
+        /// <param name="_fileName">File Name</param>
+        /// <returns></returns>
+       public (string FileName,FileInfo FileInfo) ExportPngTuple(FrameworkElement _element,string _fileName)
+        {
+            //Create FileName 
+            var info = new FileInfo(_fileName);
+            //Create the Png File 
+            CreatePng(_fileName, 96, _element);
+
+            return (_fileName, info);
+
+            
+        }
+
         /// <summary>
         /// A Tuple to handle Filters for saving and Loading files 
         /// </summary>
@@ -65,29 +85,6 @@ namespace abArt
         }
 
 
-
-        /// <summary>
-        /// Tuple update TabItem info Quickly 
-        /// </summary>
-        /// <param name="_fileName"></param>
-        /// <param name="_tabitem"></param>
-        /// <returns></returns>
-        public (string FileName, FileInfo FileInfo) UpdateTabInfo(string _fileName, DocumentTabItem _tabitem)
-        {
-            //Setup FileInfo
-            _tabitem.FileInfo = new FileInfo(_fileName);
-            _tabitem.CurrentFile = _fileName;
-            _tabitem.Header = _tabitem.FileInfo.Name;
-
-            //Send a Message
-            Message($"Your TabItem is hosting {_tabitem.FileInfo.Name} from the{_tabitem.FileInfo.DirectoryName} directory",true);
-
-
-            //Return Value 
-            return (_fileName, _tabitem.FileInfo);
-
-
-        }
 
 
 
@@ -169,6 +166,9 @@ namespace abArt
 
             return (_fileName, fileinfo);
         }
+
+
+
         /// <summary>
         /// Load Artboard Tuple 
         /// </summary>

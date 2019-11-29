@@ -92,8 +92,10 @@
         <Setter Property="Background" Value="Black" />
         <Setter Property="BorderBrush" Value="White" />
         <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="27" />
-            <Setter Property="ShowLineNumbers" Value="True" />
+        <Setter Property="FontFamily" Value="Courier New" />
+        <Setter Property="FontSize" Value="27" />
+        <Setter Property="WordWrap" Value="True" />
+        <Setter Property="ShowLineNumbers" Value="True" />
     </Style>
     <Style TargetType="TextBox" x:Key="txtField">
         <Setter Property="Background" Value="Black" />
@@ -103,6 +105,7 @@
         <Setter Property="Height" Value="30" />
         <Setter Property="FontSize" Value="18pt" />
         <Setter Property="Margin" Value="5" />
+  
         <Setter Property="AcceptsReturn" Value="False" />
         <Setter Property="AcceptsTab" Value="False" />
     </Style>
