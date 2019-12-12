@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AlbertWin32\AlbertWin32.csproj" />
+    <ProjectReference Include="..\Albert.Win32\Albert.Win32.csproj" />
     <ProjectReference Include="..\Albert\Albert.csproj" />
   </ItemGroup>
 

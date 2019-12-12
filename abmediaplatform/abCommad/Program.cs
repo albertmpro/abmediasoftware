@@ -245,7 +245,7 @@ namespace abCommad
         static void WebsiteProject()
         { 
 
-            var isAddingPages = true;
+       
             Clear();
             WriteTitle("Website Project");
 
