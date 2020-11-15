@@ -1,0 +1,35 @@
+﻿<local:ABShell x:Class="abNoteBook.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+        xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+        xmlns:local="clr-namespace:abNoteBook.Controls"
+        mc:Ignorable="d"
+        Title="abNoteBook 1.0" WindowState="Maximized"  Height="450" Width="960">
+    <Grid >
+    <Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+    <!--Tab Control -->
+		<TabControl x:Name="tab" />
+       
+       <!--New Item Control -->
+		<local:NewDialog x:Name="newDialog" />
+
+		<!--Status Bar -->
+		<StatusBar Height="50" Grid.Row="1">
+			<c:PushButton Content="Log" Command="w:DesktopCommands.LogInfo" Style="{StaticResource btnStatus}" ToolTip="Log Info" Width="75" />
+            	<c:PushButton Content="?" Style="{StaticResource btnStatus}" ToolTip="Help" Command="w:DesktopCommands.About" Width="75" />
+			<Separator />
+			<TextBlock ToolTip="Status" x:Name="tbStatus" />
+
+
+
+
+		</StatusBar>
+
+	</Grid>
+</local:ABShell>

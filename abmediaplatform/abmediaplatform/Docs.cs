@@ -4,7 +4,7 @@ using System.Text;
 
 namespace abmediaplatform
 {
-    public class Docs
+    public static class Docs
     {
         #region Html Genrator's 
         /// <summary>
@@ -64,6 +64,22 @@ namespace abmediaplatform
 
 
             var rv = $"{name}\n";
+
+            return rv;
+        }
+        /// <summary>
+        /// WP Style with CSS to back it up 
+        /// </summary>
+        /// <param name="_themeName"></param>
+        /// <param name="_author"></param>
+        /// <param name="_css"></param>
+        /// <returns></returns>
+        public static string WPStyle(string _themeName, string _author, string _css)
+        {
+            var name = $"/*\nTheme Name:{_themeName}\nAuthor:{_author}*/\n";
+
+
+            var rv = $"{name}\n{_css}\n";
 
             return rv;
         }

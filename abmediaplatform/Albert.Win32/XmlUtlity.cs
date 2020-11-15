@@ -22,152 +22,177 @@ namespace Albert.Win32
     /// </summary>
     public static class XmlUtility
     {
-
         /// <summary>
-        /// Tuple to Create an Xml Document 
+        /// NewXmlDocTuple create Xml Document fast 
         /// </summary>
-        /// <param name="_filetag">Top Tag Name</param>
-        /// <param name="_maintag">Document Tab Name</param>
+        /// <param name="_root"></param>
+        /// <param name="_document"></param>
         /// <returns></returns>
-        public static (XElement Xml, XElement Document)CreateXmlDocument(string _filetag,string _maintag)
+        public static (XElement Root, XElement Document) NewXmlDocTuple(string _root, string _document)
         {
-            //Create the core xml 
-            var xml = new XElement(_filetag);
-            //Create the document you want to define 
-            var document = new XElement(_maintag);
-            //Add document to xml  file 
-            xml.Add(document);
-            return (xml, document);
+            //Define the root xml element 
+            var root = new XElement(_root);
+            //Define the document xml eleemnt
+            var document = new XElement(_document);
+
+            //Add document to root element 
+            root.Add(document);
+
+            //Return the Values 
+            return (root, document);
 
         }
-           
-        public static string GetLocalFile(string _fileName)
-        {
-            var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            return Path.Combine(appData, _fileName);
-        }
+
+        #region Converter's
+        
         /// <summary>
-        /// Method to Grab local xml file 
+        /// Convert Xml to Double  
         /// </summary>
-        /// <param name="_name"></param>
+        /// <param name="_element">XElement</param>
         /// <returns></returns>
-        public static XElement LoadXmlFromLocalFolder(string _name)
-        {
-            XElement xml;
-            var file = GetLocalFile(_name);
-            if (File.Exists(file))
-            {
-                xml = XElement.Load(file);
-                return xml;
-            }
-            else
-            {
-                xml = new XElement("Nope", "You loaded nothing");
-                MessageBox.Show("Nope, you loaded nothing ");
-                return xml;
-
-            }
-
-        }
-        /// <summary>
-        /// Save Xml to a Local Folder of an Application 
-        /// </summary>
-        /// <param name="_name">Name </param>
-        /// <param name="_xmlDoc">Xml Document you want to save</param>
-        public static void SaveXmlToLocalPath(string _name, XElement _xmlDoc)
-        {
-            if (_xmlDoc != null)
-            {
-                var file = GetLocalFile(_name);
-                //Save Local file 
-                _xmlDoc.Save(file);
-            }
-        }
-
-        /// <summary>
-        /// Method to get a Double from an Xml Value 
-        /// </summary>
-        /// <param name="_Value"></param>
-        /// <returns></returns>
-        public static double GetDoubleFromXml(string _Value)
+        public static double ToXmlDouble(XElement _element)
         {
             try
             {
-                var mydouble = ToDouble(_Value);
-                return mydouble;
+                return ToDouble(_element.Value);
             }
             catch
             {
-                MessageBox.Show("Value was not a double, you get 0.0");
-                return 0.0;
-            }
-        }
-
-        /// <summary>
-        /// Method to get an Int32 from an zXml value 
-        /// </summary>
-        /// <param name="_Value"></param>
-        /// <returns></returns>
-        public static int GetInt32FromXml(string _Value)
-        {
-            try
-            {
-                var myint = ToInt32(_Value);
-                return myint;
-            }
-            catch
-            {
-                MessageBox.Show("Value was not a int, You get 0");
+                MessageBox.Show($"{_element.Value} not a double");
                 return 0;
             }
         }
-        public static decimal GetDecimalFromXml(string _Value)
+        /// <summary>
+        /// Convert Xml to Double 
+        /// </summary>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        public static double ToXmlDouble(XAttribute _element)
         {
             try
             {
-                var mydecimal = ToDecimal(_Value);
-                return mydecimal;
+                return ToDouble(_element.Value);
             }
             catch
             {
-                MessageBox.Show("Value was not a decimal,you get 0.0");
-                return 0.0m;
+                MessageBox.Show($"{_element.Value} not a double");
+                return 0;
             }
         }
         /// <summary>
-        /// Convert Xml Value to Color
+        /// Convert Xml Value to a Byte
         /// </summary>
-        /// <param name="_Value"></param>
+        /// <param name="_element"></param>
         /// <returns></returns>
-        public static Color GetColorFromXml(string _Value)
+        public static byte ToXmlByte(XElement _element)
         {
             try
             {
-                var myColor = HexColor(_Value);
-                return myColor;
+                return ToByte(_element.Value);
             }
             catch
             {
-                MessageBox.Show("Value was not a color,you get Black");
-                return HexColor("#ff000000");
+                MessageBox.Show($"{_element.Value} is not a byte");
+                return 0;
+            }
+        }
+        /// <summary>
+        /// Convert Xml to a Byte
+        /// </summary>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        public static byte ToXmlByte(XAttribute _element)
+        {
+            try
+            {
+                return ToByte(_element.Value);
+            }
+            catch
+            {
+                MessageBox.Show($"{_element.Value} is not a byte");
+                return 0;
             }
         }
 
 
         /// <summary>
-        /// Get a Enum Type from a Xml Value 
+        /// Convert Xml to Decimal  
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="_value"></param>
+        /// <param name="_element"></param>
         /// <returns></returns>
-        public static T GetENumFroXml<T>(string _value)
+        public static decimal ToXmlDecimal(XElement _element)
         {
-            return ConvertEnum<T>(_value);
+            try
+            {
+                return ToDecimal(_element.Value);
+            }
+            catch
+            {
+                MessageBox.Show($"{_element.Value} is not a decimal");
+                return 0;
+            }
         }
+        /// <summary>
+        /// Convert Xml to Decimal 
+        /// </summary>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        public static decimal ToXmlDecimal(XAttribute _element)
+        {
+            try
+            {
+                return ToDecimal(_element.Value);
+            }
+            catch
+            {
+                MessageBox.Show($"{_element.Value} is not a decimal");
+                return 0;
+            }
+        }
+        /// <summary>
+        /// Convert to Xml to Int32
+        /// </summary>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        public static int ToXmlInt32(XElement _element)
+        {
+            try
+            {
+                return ToInt32(_element.Value);
+            }
+            catch
+            {
+                MessageBox.Show($"{_element.Value} is not a Int32");
+                return 0;
+            }
+        }
+        /// <summary>
+        /// Convert to Xml to Int32
+        /// </summary>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        public static int ToXmlInt32(XAttribute _element)
+        {
+            try
+            {
+                return ToInt32(_element.Value);
+            }
+            catch
+            {
+                MessageBox.Show($"{_element.Value} is not a Int32");
+                return 0;
+            }
+        }
+
+
+
+        #endregion
+
+
+
+
 
     }
-
-
 
 
 

@@ -12,10 +12,13 @@ namespace Albert.Win32
 	/// </summary>
 	public static class DesktopCommands
 	{
-		private static readonly RoutedUICommand import,runconsole, export, startview, about, options, saveas, quit, zoomin, zoomout,snips;
+		private static readonly RoutedUICommand clear,loginfo, import,runconsole, export, startview, about, options, saveas, quit, zoomin, zoomout,snips;
 
         static DesktopCommands()
         {
+            clear = CreateCommand("Clear", typeof(DesktopCommands), Key.C, ModifierKeys.Alt, "Alt+C");
+
+            loginfo = CreateCommand("LogInfo", typeof(DesktopCommands), Key.L, ModifierKeys.Control, "Ctrl+L");
 
             import = CreateCommand("Import", typeof(DesktopCommands), Key.I, ModifierKeys.Control, "Ctrl+I");
 
@@ -70,8 +73,22 @@ namespace Albert.Win32
             return cmd;
         }
 
+        /// <summary>
+        /// Get the Clear Command
+        /// </summary>
+        public static RoutedUICommand Clear => clear;
+     
+
+        /// <summary>
+        /// Get the LogInfo Command
+        /// </summary>
+        public static RoutedUICommand LogInfo => loginfo;
+        /// <summary>
+        /// Get the Import Command
+        /// </summary>
         public static RoutedUICommand Import => import;
-        /// Get RunConsole Command
+        /// <summary>
+        /// Get the RunConsole Command
         /// </summary>
         public static RoutedUICommand RunConsole => runconsole;
         /// <summary>

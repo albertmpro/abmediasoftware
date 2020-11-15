@@ -1,0 +1,48 @@
+﻿<local:ABView x:Class="abNoteBook.View.NoteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:ic="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:abNoteBook.Controls"
+             xmlns:abp="clr-namespace:abmediaplatform"
+			 mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+     <Grid>
+    <Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+         <ToolBarTray>
+			<ToolBar>
+				<c:PushButton Command="New" Source="/Images/appbar/add.png" />
+					<c:PushButton Command="Open" Source="/Images/appbar/file.png" />
+						<c:PushButton Command="Save"  Source="/Images/appbar/save.png" />
+							<c:PushButton Command="w:DesktopCommands.SaveAs" Source="/Images/appbar/saveas.png" />
+			</ToolBar>
+			<ToolBar>
+				<Slider x:Name="slFontSize" ValueChanged="slFontSize_ValueChanged" Value="22" Minimum="22" Maximum="95" ToolTip="Font SLider" />
+				<Separator />
+				<c:OptionButton Content="C" Click="WriterState_Click" Tag="Code" ToolTip="Code Mode" />
+					<c:OptionButton Tag="Writer" Click="WriterState_Click" Content="W" ToolTip="Writer Mode" />
+				<Separator/>
+				<ComboBox x:Name="cmbFontType" SelectionChanged="cmbFontType_SelectionChanged" Width="120" >
+				<abp:NoteFont Name="Segoe Print" />
+				<abp:NoteFont Name="Courier New" />
+					<abp:NoteFont Name="Consolas" />
+				</ComboBox>
+
+			</ToolBar>
+		</ToolBarTray>
+		<Grid Grid.Row="1">
+			<ic:TextEditor x:Name="txtCode" />
+			<c:WriterBox x:Name="txtWriter" />
+		</Grid>
+
+	
+
+	</Grid>
+    
+</local:ABView>

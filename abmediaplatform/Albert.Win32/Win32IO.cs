@@ -222,6 +222,19 @@ namespace Albert.Win32
 			}
 
 		}
+		/// <summary>
+		/// Create a string filename 
+		/// </summary>
+		/// <param name="_name"></param>
+		/// <param name="_directory"></param>
+		/// <returns></returns>
+		public static string StringFlieName(string _name, string _directory)
+		{
+			var rv = Path.Combine(_directory,_name);
+			return rv;
+		}
+
+
 		#endregion
 
 
@@ -299,6 +312,37 @@ namespace Albert.Win32
                 //Close the stream 
                 stream.Close();
             }
+		}
+
+
+		public static void CreateTiff(string _fileName, int dpi, FrameworkElement element)
+		{
+			//Mesuse and Create the right size of the Element
+			element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+			element.Arrange(new Rect(new Point(0, 0), element.DesiredSize));
+
+			//Convert width and height to whole pixels
+			var width = (int)Math.Ceiling(element.ActualWidth);
+			var height = (int)Math.Ceiling(element.ActualHeight);
+
+			width = width == 0 ? 1 : width;
+			height = height == 0 ? 1 : height;
+
+			var bitmap = new RenderTargetBitmap(width, height, dpi, dpi, PixelFormats.Default);
+			//Render the Visual 
+			bitmap.Render(element);
+
+			if (_fileName != string.Empty)
+			{
+				using var stream = new FileStream(_fileName, FileMode.Create);
+				var encoder = new TiffBitmapEncoder();
+
+				encoder.Frames.Add(BitmapFrame.Create(bitmap));
+				//Save the bitmap 
+				encoder.Save(stream);
+				//Close the stream 
+				stream.Close();
+			}
 		}
 
 		#endregion

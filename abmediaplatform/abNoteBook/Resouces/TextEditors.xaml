@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ic="http://icsharpcode.net/sharpdevelop/avalonedit"
+                    xmlns:local="clr-namespace:abNoteBook.Resouces">
+    
+    <Style TargetType="ic:TextEditor" x:Key="cdNote">
+		<Setter Property="FontFamily" Value="Segoe Print" />
+        <Setter Property="FontSize" Value="22" />
+	</Style>
+     <Style TargetType="ic:TextEditor" x:Key="cdCode">
+		<Setter Property="FontFamily" Value="Courier New" />
+        <Setter Property="FontSize" Value="22" />
+	</Style>
+
+        <Style TargetType="TextBox" x:Key="txtNote">
+		<Setter Property="FontFamily" Value="Segoe Print" />
+        <Setter Property="FontSize" Value="22" />
+	</Style>
+     <Style TargetType="TextBox" x:Key="txtCode">
+		<Setter Property="FontFamily" Value="Courier New" />
+        <Setter Property="FontSize" Value="22" />
+	</Style>
+
+</ResourceDictionary>

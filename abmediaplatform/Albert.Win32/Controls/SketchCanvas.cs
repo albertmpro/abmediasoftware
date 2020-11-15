@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 using System.Windows.Markup;
 
-namespace Albert.Standard.Win32
+namespace Albert.Win32.Oppsoleate  
 {
 	/// <summary>
 	/// A special canvas designed for  Sketching

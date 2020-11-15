@@ -12,7 +12,7 @@ namespace Albert.Win32.Controls
         public CheckButton()
         {
             //ReDraw the Template 
-            DefaultStyleKey = typeof(OptionButton);
+            DefaultStyleKey = typeof(CheckButton);
         }
 
         #region Dedenency Properties

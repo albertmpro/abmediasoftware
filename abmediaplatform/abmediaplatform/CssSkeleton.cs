@@ -86,12 +86,27 @@ namespace abmediaplatform
             rv += CssValue("font-family", $"{FontFamily}");
             rv += CssValue("font-size", $"{FontSize}");
             rv += CssValue("width", $"100%");
-            rv += CssValue("padding", $"0px");     rv += CssValue("width", $"85%");
+            rv += CssValue("padding", $"0px");     
+            rv += $"}}\n";
+
+            //logo 
+            rv += $".logo\n{{\n";
+            rv += CssValue("display", $"inline-block");
+            rv += CssValue("width", $"125px");
+            rv += CssValue("height", "125px");
+;           
+            //header 
+            rv += $"header\n{{\n";
+            rv += CssValue("display", $"block");
+            rv += CssValue("width", $"100%");
+            rv += CssValue("background-color", $"{Background}");
+            rv += CssValue("padding", "7px");
             rv += $"}}\n";
             //.container 
             rv += $".container\n{{\n";
             rv += CssValue("display", $"block");
-            rv += CssValue("width", $"85%");
+            rv += CssValue("width", $"100%");
+            rv += CssValue("padding", "7px");
             rv += CssValue("background-color", $"{ContainerBackground}");
             rv += $"}}\n";
 
@@ -247,7 +262,7 @@ namespace abmediaplatform
 
 
 
-            rv += $"..container li \n{{\n";
+            rv += $".container li \n{{\n";
             rv += CssValue("line-height", $"175%");
             rv += $"}}\n";
 

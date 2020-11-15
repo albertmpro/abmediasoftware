@@ -1,0 +1,50 @@
+﻿<local:ABView x:Class="abNoteBook.View.StartNote"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+			 xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ic="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:local="clr-namespace:abNoteBook.Controls"
+             xmlns:abp="clr-namespace:abmediaplatform"
+			 mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+    <Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+        <ToolBarTray>
+			<ToolBar>
+
+				<c:PushButton ToolTip="Create New Item" Command="New" Source="/images/appbar/add.png" />
+
+				<c:PushButton ToolTip="Open File to New Tab" Command="Open" Source="/Images/appbar/file.png" >
+					
+				</c:PushButton>
+				<c:PushButton ToolTip="Import Text File" Command="w:DesktopCommands.Import" Source="/Images/appbar/import.png" />
+							<c:PushButton ToolTip="Export Text File"  Command="w:DesktopCommands.Export" Source="/Images/appbar/export.png" />
+			</ToolBar>
+			<ToolBar>
+				<Slider x:Name="slFontSize" ValueChanged="slFontSize_ValueChanged" Value="22" Minimum="22" Maximum="95" ToolTip="Font Size" />
+				<Separator />
+				<c:OptionButton Content="C" Click="WriterState_Click" Tag="Code" ToolTip="Code Mode" />
+				<c:OptionButton Tag="Writer" Click="WriterState_Click" Content="W" ToolTip="Writer Mode" />
+						<Separator/>
+				<ComboBox x:Name="cmbFontType" SelectionChanged="cmbFontType_SelectionChanged" Width="120"  >
+				<abp:NoteFont Name="Segoe Print" />
+				<abp:NoteFont Name="Courier New" />
+					<abp:NoteFont Name="Consolas" />
+				</ComboBox>
+
+			</ToolBar>
+		</ToolBarTray>
+		<Grid Grid.Row="1">
+			<ic:TextEditor TabIndex="1" x:Name="txtCode" />
+			<c:WriterBox x:Name="txtWriter" />
+		</Grid>
+	
+
+	</Grid>
+</local:ABView>

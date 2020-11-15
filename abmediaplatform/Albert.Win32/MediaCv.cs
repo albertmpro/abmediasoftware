@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Albert.Win32.Controls;
 using static Albert.Win32.QuickAnimation;
 
     
@@ -54,6 +55,24 @@ namespace Albert.Win32
             RunDouble(_elm, "Opacity", 1, 0, TimeSpan.FromSeconds(_secondsRun));
         }
         #endregion
+
+
+        #region Slider Method 
+
+        public static void OnSlideValue(double _value,Action<double> _method)
+        {
+            try
+            {
+                //Excute Method 
+                _method?.Invoke(_value);
+            }
+            catch
+            {
+
+            }
+        }
+
+        #endregion 
 
 
         #region Color Converters 
@@ -360,11 +379,12 @@ namespace Albert.Win32
 
         #region Image Converter 
 
-
-        public static void ImageFile(Image _img,string _url)
+      
+        public static void LoadImageFile(Image _img,string _url)
         {
             //Create the Image
             var img = _img;
+
 
             img.Source = new BitmapImage(new Uri(_url));
 
@@ -385,6 +405,50 @@ namespace Albert.Win32
 
             
         }
+        public static void ImageFile(OptionButton _img, string _url, Stretch _stretch)
+        {
+            //Create the Image
+            var img = _img;
+
+            //Create the Image
+            img.Source = new BitmapImage(new Uri(_url));
+
+
+            //Setup the Stretch Property 
+            img.Stretch = _stretch;
+
+
+        }
+        public static void ImageFile(PushButton _img, string _url, Stretch _stretch)
+        {
+            //Create the Image
+            var img = _img;
+
+            //Create the Image
+            img.Source = new BitmapImage(new Uri(_url));
+
+
+            //Setup the Stretch Property 
+            img.Stretch = _stretch;
+
+
+        }
+        public static void ImageFile(CheckButton _img, string _url, Stretch _stretch)
+        {
+            //Create the Image
+            var img = _img;
+
+            //Create the Image
+            img.Source = new BitmapImage(new Uri(_url));
+
+
+            //Setup the Stretch Property 
+            img.Stretch = _stretch;
+
+
+        }
+
+
 
         public static ImageBrush ImgBrush(string _url)
         {

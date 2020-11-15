@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+                    xmlns:local="clr-namespace:abNoteBook.Controls">
+
+	<!--#region Preset FontFamily Boxes-->
+	<Style TargetType="ListBox" x:Key="lstFontFamily">
+		<Setter Property="ItemsSource" Value="{x:Static Fonts.SystemFontFamilies}" />
+	</Style>
+	<Style TargetType="ComboBox" x:Key="cmbFontFamily">
+		<Setter Property="ItemsSource" Value="{x:Static Fonts.SystemFontFamilies}" />
+	</Style>
+
+	<!--#endregion -->
+
+
+	<!--#region Data Templates-->
+
+	<!--#endregion -->
+
+</ResourceDictionary>

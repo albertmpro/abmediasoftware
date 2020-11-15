@@ -9,8 +9,21 @@
     <Import_RootNamespace>abmediaplatform</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ABTextFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ArtBoardFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ArtFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BrushModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ColorModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CreateCharacterFormat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CssSkeleton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Docs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IPlatform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsgFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NBSettingsFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NoteDoc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NoteFont.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeFormat.cs" />
   </ItemGroup>
 </Project>

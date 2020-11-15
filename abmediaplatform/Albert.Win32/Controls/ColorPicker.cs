@@ -40,9 +40,9 @@ namespace Albert.Win32.Controls
 
         #region Depedency Properties 
 
-        private static readonly DependencyProperty ColorProperty = DP("Color",typeof(Color),typeof(ColorPicker));
+        public static readonly DependencyProperty ColorProperty = DP("Color",typeof(Color),typeof(ColorPicker));
 
-        private static readonly DependencyProperty HexValueProperty = DP("HexValue", typeof(string), typeof(ColorPicker));
+        public static readonly DependencyProperty HexValueProperty = DP("HexValue", typeof(string), typeof(ColorPicker));
 
 
 

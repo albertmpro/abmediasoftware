@@ -1,0 +1,510 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ct="clr-namespace:abNoteBook.Controls"
+					xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+                    xmlns:ic="http://icsharpcode.net/sharpdevelop/avalonedit"
+                    xmlns:local="clr-namespace:abNoteBook.View">
+
+
+
+	<!--#region Main UI-->
+
+
+
+	<Style TargetType="local:MainView">
+		<Setter Property="Icon" Value="/Images/abNotebook2.png" />
+		<Setter Property="WindowState" Value="Maximized" />
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+	</Style>
+
+
+	<Style TargetType="Slider" x:Key="toolZoom">
+		<Setter Property="Minimum" Value="-80" />
+		<Setter Property="Maximum" Value="80" />
+		<Setter Property="Value" Value="0" />
+		<Setter Property="RenderTransform">
+	<Setter.Value>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Setter.Value>
+	</Setter>
+
+	
+	</Style>
+
+	
+	<Style TargetType="ListBox">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+	</Style>
+
+
+	<Style TargetType="ToolBarTray">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+	
+	</Style>
+
+	
+	<Style TargetType="Image">
+		<Setter Property="Stretch" Value="Uniform" />
+	</Style>
+	<Style TargetType="Menu">
+		<Style.Resources>
+			<Style TargetType="MenuItem">
+				<Setter Property="Background" Value="{StaticResource abBackground}" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="FontSize" Value="18pt" />
+				<Setter Property="BorderThickness" Value="0" />
+
+			</Style>
+		</Style.Resources>
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+	</Style>
+
+	<!--#region Buttons-->
+
+	<ControlTemplate x:Key="MenuTemplate1" TargetType="{x:Type Menu}">
+		<Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+			<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+		</Border>
+	</ControlTemplate>
+	<Style TargetType="c:PushButton" x:Key="pushBase">
+		<Setter Property="Background" Value="{StaticResource abRadialChrome}" />
+		<Setter Property="BackgroundMouseOver" Value="{StaticResource abRadialChrome5}" />
+		<Setter Property="BackgroundPressed" Value="{StaticResource abRadialChrome2}" />
+		<Setter Property="BorderBrush" Value="{StaticResource abForeground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="ForegroundPressed" Value="{StaticResource abAccent4}" />
+		<Setter Property="FontSize" Value="18pt" />
+		<Setter Property="FontFamily" Value="Segoe UI Black" />
+		<Setter Property="Margin" Value="5" />
+	</Style>
+
+	<Style TargetType="c:OptionButton" x:Key="optBase">
+		<Setter Property="Background" Value="{StaticResource abRadialChrome}" />
+		<Setter Property="BackgroundMouseOver" Value="{StaticResource abRadialChrome5}" />
+		<Setter Property="BackgroundChecked" Value="{StaticResource abRadialChrome2}" />
+		<Setter Property="BorderBrush" Value="{StaticResource abForeground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="ForegroundChecked" Value="{StaticResource abAccent4}" />
+		<Setter Property="FontSize" Value="18pt" />
+		<Setter Property="Margin" Value="5" />
+		<Setter Property="Stretch" Value="Uniform" />
+		<Setter Property="FontFamily" Value="Segoe UI Black" />
+	</Style>
+
+	<Style TargetType="c:CheckButton" x:Key="chkBase">
+		<Setter Property="Background" Value="{StaticResource abRadialChrome}" />
+		<Setter Property="BackgroundMouseOver" Value="{StaticResource abRadialChrome5}" />
+		<Setter Property="BackgroundChecked" Value="{StaticResource abRadialChrome2}" />
+		<Setter Property="BorderBrush" Value="{StaticResource abForeground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="ForegroundChecked" Value="{StaticResource abAccent4}" />
+		<Setter Property="FontSize" Value="18pt" />
+		<Setter Property="Margin" Value="5" />
+		<Setter Property="Stretch" Value="Uniform" />
+		<Setter Property="FontFamily" Value="Segoe UI Black" />
+	</Style>
+
+	<Style TargetType="c:PushButton" BasedOn="{StaticResource pushBase}">
+		<Setter Property="Width" Value="150" />
+		<Setter Property="Height" Value="45" />
+	</Style>
+
+	<Style TargetType="c:PushButton" x:Key="btnBrowser" BasedOn="{StaticResource pushBase}">
+		<Setter Property="Width" Value="45" />
+		<Setter Property="Height" Value="45" />
+		<Setter Property="FontSize" Value="18" />
+	</Style>
+
+
+	<Style TargetType="c:OptionButton" BasedOn="{StaticResource optBase}">
+		<Setter Property="Width" Value="50" />
+		<Setter Property="Height" Value="50" />
+	</Style>
+	<Style TargetType="c:CheckButton"  BasedOn="{StaticResource chkBase}">
+		<Setter Property="Width" Value="50" />
+		<Setter Property="Height" Value="50" />
+	</Style>
+
+
+	<!--#endregion -->
+
+	<Style TargetType="ToolBarPanel">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+	</Style>
+
+	<Style TargetType="ToolBar">
+		<Style.Resources>
+			<Style TargetType="TextBox">
+
+				<Setter Property="FontSize" Value="14pt" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="Background" Value="{StaticResource abBackground}" />
+			</Style>
+			<Style TargetType="TextBlock">
+
+				<Setter Property="FontSize" Value="14pt" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="VerticalAlignment" Value="Center" />
+			</Style>
+			<Style TargetType="c:PushButton" >
+				<Setter Property="Margin" Value="3" />
+				<Setter Property="Width" Value="45" />
+				<Setter Property="Height" Value="45" />
+			</Style>
+
+			<Style TargetType="c:OptionButton" >
+				<Setter Property="Margin" Value="3" />
+				<Setter Property="Width" Value="45" />
+				<Setter Property="Height" Value="45" />
+				<Setter Property="Stretch" Value="Uniform" />
+			</Style>
+
+			<Style TargetType="ComboBoxItem">
+				<Setter Property="Background" Value="{StaticResource abBackground}" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="FontSize" Value="16pt"  />
+
+			</Style>
+
+
+			<Style TargetType="Slider" >
+				<Setter Property="Margin" Value="3" />
+				<Setter Property="Background" Value="{StaticResource abBackground}" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="Width" Value="110" />
+				<Setter Property="VerticalAlignment" Value="Center" />
+
+			</Style>
+		</Style.Resources>
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+	</Style>
+
+
+	<!--#region TextBox's-->
+
+
+
+	<Style TargetType="GridSplitter">
+		<Setter Property="Background" Value="{StaticResource abForeground}" />
+		<Setter Property="Width" Value="15" />
+		<Setter Property="VerticalAlignment" Value="Stretch" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+	</Style>
+
+
+	<Style TargetType="ic:TextEditor">
+	<Setter Property="ContextMenu">
+			<Setter.Value>
+				<ContextMenu BorderThickness="0" BorderBrush="Transparent" Background="{StaticResource abBackground}">
+					<MenuItem Command="Cut" />
+					<MenuItem Command="Copy" />
+					<MenuItem Command="Paste" />
+				</ContextMenu>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="FontFamily" Value="Segoe Print" />
+		<Setter Property="Background" Value="Black" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="WordWrap" Value="True" />
+		<Setter Property="ShowLineNumbers" Value="True" />
+	</Style>
+
+	<!-- Status Button-->
+	<Style BasedOn="{StaticResource pushBase}" TargetType="c:PushButton" x:Key="btnStatus">
+
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="Height" Value="44" />
+		
+	</Style>
+
+	<Style TargetType="TextBox" x:Key="txtBase">
+	
+
+		<Setter Property="Background" Value="Black" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="FontFamily" Value="Segoe Print" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="AcceptsReturn" Value="True" />
+		<Setter Property="AcceptsTab" Value="True" />
+		<Setter Property="SpellCheck.IsEnabled" Value="True" />
+	</Style>
+
+	<Style TargetType="c:ATextField"  BasedOn="{StaticResource txtBase}">
+		<Setter Property="Width" Value="1080" />
+		<Setter Property="Height" Value="1080" />
+		
+	</Style>
+
+	<Style TargetType="c:WriterBox" BasedOn="{StaticResource txtBase}">
+		<Setter Property="ContextMenu">
+			<Setter.Value>
+				<ContextMenu BorderBrush="Transparent" BorderThickness="0" Background="{StaticResource abBackground}">
+					<MenuItem Command="Cut" />
+					<MenuItem Command="Copy" />
+					<MenuItem Command="Paste" />
+				</ContextMenu>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="TextBox" BasedOn="{StaticResource txtBase}" />
+
+	<Style TargetType="TextBox" x:Key="txtField" BasedOn="{StaticResource txtBase}">
+
+		<Setter Property="Height" Value="30" />
+		<Setter Property="FontSize" Value="14pt" />
+		<Setter Property="AcceptsTab" Value="False" />
+		<Setter Property="AcceptsReturn" Value="False" />
+		<Setter Property="FontFamily" Value="Segoe Print" />
+	</Style>
+
+
+	<Style TargetType="c:RichTextBlock">
+		<Setter Property="Background" Value="Black" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="AcceptsReturn" Value="True" />
+		<Setter Property="AcceptsTab" Value="True" />
+		<Setter Property="SpellCheck.IsEnabled" Value="True" />
+	</Style>
+
+	<!--#endregion -->
+
+	<Style TargetType="c:ZoomBox">
+		<Setter  Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Stretch" Value="Uniform" />
+	</Style>
+
+	<Style TargetType="c:DrawCanvas">
+
+		<Setter Property="Background" Value="#FFA7A7A7" />
+		<Setter Property="BrushSize" Value="10" />
+		<Setter Property="BrushOpacity" Value="75" />
+		<Setter Property="Width" Value="1920" />
+		<Setter Property="Height" Value="1080" />
+	</Style>
+
+	<Style TargetType="TabControl">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+	</Style>
+
+	<Style TargetType="c:DocumentTabItem">
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="BackgroundSelected" Value="{StaticResource abRadialChrome}" />
+
+	</Style>
+
+	<Style TargetType="Grid" x:Key="gridDropDown">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Width" Value="450" />
+		<Setter Property="Height" Value="300" />
+	</Style>
+
+
+	<Style TargetType="c:OptionButton" x:Key="optSelect">
+		<Setter Property="Width" Value="70" />
+		<Setter Property="Height" Value="70" />
+		<Setter Property="Margin" Value="7" />
+	</Style>
+
+	<Style TargetType="c:OptionButton" x:Key="optSizes">
+		<Setter Property="Width" Value="145" />
+		<Setter Property="Height" Value="70" />
+		<Setter Property="Margin" Value="7" />
+	</Style>
+
+	<Style TargetType="c:CheckButton" x:Key="chkSelect">
+		<Setter Property="Width" Value="45" />
+		<Setter Property="Height" Value="45" />
+		<Setter Property="Margin" Value="7" />
+		<Setter Property="Stretch" Value="Uniform" />
+	</Style>
+
+
+	<Style TargetType="c:PushButton" x:Key="btnGo">
+		<Setter Property="Background"  Value="#FF04C21C" />
+		<Setter Property="BackgroundPressed" Value="Green" />
+		<Setter Property="Width" Value="50" />
+		<Setter Property="Height" Value="50" />
+	</Style>
+	<Style TargetType="c:PushButton" x:Key="btnRefresh">
+
+		<Setter Property="Width" Value="50" />
+		<Setter Property="Height" Value="50" />
+	</Style>
+	<!--endregion -->
+
+
+	<!--#region Other UI-->
+
+
+	<Style TargetType="ct:NewDialog">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+
+	</Style>
+
+	<Style TargetType="c:OptionButton" x:Key="optTheme">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="White" />
+		<Setter Property="BorderThickness" Value="2.5" />
+		<Setter Property="BorderBrushChecked" Value="White" />
+		<Setter Property="Margin" Value="4" />
+		<Setter Property="Height" Value="50" />
+		<Setter Property="Width" Value="50" /> 
+	</Style>
+
+	<Style TargetType="c:OptionButton" x:Key="optNew" BasedOn="{StaticResource optBase}">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Height" Value="75" />
+		<Setter Property="Width" Value="185" /> 
+	</Style>
+
+	<Style TargetType="Rectangle" x:Key="rectColor">
+		<Setter Property="Stroke" Value="White" />
+		<Setter Property="Width" Value="80" />
+		<Setter Property="Height" Value="80" />
+		<Setter Property="Margin"  Value="8" />
+	</Style>
+
+	<Style TargetType="c:PushButton" x:Key="btnGO">
+	
+	
+	</Style>
+
+	<Style TargetType="Line" x:Key="tbLine">
+		<Setter Property="X1" Value="0" />
+		<Setter Property="X2" Value="300" />
+		<Setter Property="Stroke" Value="{StaticResource abForeground}" />
+		<Setter Property="StrokeThickness" Value="3.5" />
+	</Style>
+
+
+	<Style TargetType="WrapPanel">
+		<Style.Resources>
+			<Style TargetType="ToolTip">
+				<Setter Property="Background"  Value="{StaticResource abAccent}" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="FontSize" Value="14pt" />
+				<Setter Property="Margin" Value="4" />
+			</Style>
+		</Style.Resources>
+	</Style>
+
+
+	<Style TargetType="StackPanel">
+		<Style.Resources>
+			<Style TargetType="ToolTip">
+				<Setter Property="Background"  Value="{StaticResource abAccent}" />
+				<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+				<Setter Property="FontSize" Value="14pt" />
+				<Setter Property="Margin" Value="4" />
+			</Style>
+		</Style.Resources>
+	</Style>
+
+	<Style TargetType="ComboBoxItem">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt"  />
+
+	</Style>
+
+	<Style TargetType="ListItem">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt"  />
+
+
+	</Style>
+
+	<Style TargetType="ComboBox">
+
+		<Setter Property="Width" Value="130" />
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt"  />
+
+	</Style>
+
+	<Style TargetType="Button" x:Key="btnMsg">
+		<Setter Property="Background" Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt"  />
+		<Setter Property="FontFamily" Value="Segoe UI Black" />
+	</Style>
+
+	
+	
+	<Style TargetType="MenuItem">
+		<Setter Property="Background"  Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt" />
+		<Setter Property="Margin" Value="4" />
+	</Style>
+	<Style TargetType="ContextMenu">
+		<Style.Resources>
+			<Style TargetType="MenuItem">
+				<Setter Property="Background"  Value="{StaticResource abBackground}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt" />
+			</Style>
+		</Style.Resources>
+		<Setter Property="Background"  Value="{StaticResource abAccent}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt" />
+		<Setter Property="Margin" Value="4" />
+	</Style>
+	<Style TargetType="ToolTip">
+		<Setter Property="Background"  Value="{StaticResource abAccent}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt" />
+		<Setter Property="Margin" Value="4" />
+	</Style>
+
+	<Style TargetType="StatusBar">
+		<Setter Property="BorderBrush" Value="{StaticResource abForeground}" />
+		<Setter Property="Background"  Value="{StaticResource abRadialChrome}" />
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="18pt" />
+
+	</Style>
+
+	<Style TargetType="TextBlock" >
+		<Setter Property="Foreground" Value="{StaticResource abForeground}" />
+		<Setter Property="FontSize" Value="16pt" />
+	</Style>
+
+	<Style TargetType="Hyperlink">
+		<Setter Property="Foreground" Value="LightBlue" />
+		<Setter Property="FontSize" Value="18pt" />
+		<Setter Property="TextDecorations" Value="None" />
+
+	</Style>
+
+
+
+
+
+	<!--#endregion -->
+
+
+
+
+	<!--#endregion -->
+
+
+
+</ResourceDictionary>

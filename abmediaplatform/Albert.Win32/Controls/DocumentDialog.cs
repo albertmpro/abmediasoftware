@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,20 +28,24 @@ namespace Albert.Win32.Controls
         TextBlock tbMessage = new TextBlock();
         PushButton btnOne = new PushButton();
         PushButton btnTwo = new PushButton();
+        
    
         //Action 
         Action onBtnOne, onBtnTwo;
 
         //Depdencey Propertey 
-        public static DependencyProperty TitleProperty = DP("Title", typeof(string), typeof(DocumentDialog));
+        public  static readonly DependencyProperty TitleProperty = DP("Title", typeof(string), typeof(DocumentDialog));
 
-        public static DependencyProperty MessageProperty = DP("Message", typeof(string), typeof(DocumentDialog));
+        public static readonly DependencyProperty MessageProperty = DP("Message", typeof(string), typeof(DocumentDialog));
 
-        public static DependencyProperty ButtonTextOneProperty = DP("ButtonTextOne", typeof(string), typeof(DocumentDialog));
+        public static readonly DependencyProperty ButtonTextOneProperty = DP("ButtonTextOne", typeof(string), typeof(DocumentDialog));
 
 
-        public static DependencyProperty ButtonTextTwoProperty = DP("ButtonTextTwo", typeof(string), typeof(DocumentDialog));
+        public static readonly DependencyProperty ButtonTextTwoProperty = DP("ButtonTextTwo", typeof(string), typeof(DocumentDialog));
 
+        public static readonly DependencyProperty IsButtonsHiddenProperty = DP("IsButtonsHidden", typeof(bool), typeof(DocumentDialog));
+
+            
       
 
 
@@ -53,6 +58,24 @@ namespace Albert.Win32.Controls
             //Make Hidden by default 
             Visibility = Visibility.Collapsed;
 
+         
+
+
+        }
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if (IsButtonsHidden == true)
+            {
+                btnOne.Visibility = Visibility.Collapsed;
+                btnTwo.Visibility = Visibility.Collapsed;
+            }
+            else if (IsButtonsHidden == false)
+            {
+                btnOne.Visibility = Visibility.Visible;
+                btnTwo.Visibility = Visibility.Visible;
+            }
 
         }
 
@@ -62,7 +85,7 @@ namespace Albert.Win32.Controls
 
             //Message TextBlock  
             tbMessage = GetTemplateChild("PART_tbMessage") as TextBlock;
-
+            
             //Button One 
             btnOne = GetTemplateChild("PART_btnOne") as PushButton;
             //BUtton Two 
@@ -74,8 +97,10 @@ namespace Albert.Win32.Controls
         
             // Button Two Logic 
             btnTwo.Click += btnTwo_Click;
-            
-            
+
+
+    
+
         }
 
         #region Button Logic 
@@ -85,14 +110,14 @@ namespace Albert.Win32.Controls
             //Execute onBtnThree
             onBtnOne?.Invoke();
             //Hide the Dialog when finished 
-            Visibility = Visibility.Collapsed;
+            Hide();
         }
         void btnTwo_Click(object sender, RoutedEventArgs e)
         {
             //Execute onBtnThree
             onBtnTwo?.Invoke();
             //Hide the Dialog when finished 
-            Visibility = Visibility.Collapsed;
+            Hide();
         }
 
       
@@ -110,7 +135,24 @@ namespace Albert.Win32.Controls
             CommandBindings.Add(new CommandBinding(_command,_method));
         }
 
-        #region Show Method's 
+        #region Show and Hide Method's 
+        public void Hide()
+        {
+            Visibility = Visibility.Collapsed;
+        }
+
+        public void Show(string _title,string _msg)
+        {
+            //Show the COntrool
+            Visibility = Visibility.Visible;
+            //Display the TItle 
+            Title = _title;
+            //Display the Message 
+            Message = _msg;
+            btnOne.Visibility = Visibility.Collapsed;
+            btnTwo.Visibility = Visibility.Collapsed;
+            
+        }
      
  
 
@@ -118,6 +160,8 @@ namespace Albert.Win32.Controls
         {
             //Show the Control 
             Visibility = Visibility.Visible;
+            btnOne.Visibility = Visibility.Visible;
+            btnTwo.Visibility = Visibility.Visible;
             Title = _title;
             Message = _msg;
             //Default Text is Ok 
@@ -132,6 +176,8 @@ namespace Albert.Win32.Controls
         {
             //Show the Control 
             Visibility = Visibility.Visible;
+            btnOne.Visibility = Visibility.Visible;
+            btnTwo.Visibility = Visibility.Visible;
             Title = _title;
             Message = _msg;
             //Default Text is Ok 
@@ -179,6 +225,14 @@ namespace Albert.Win32.Controls
         {
             get { return (string)GetValue(ButtonTextTwoProperty); }
             set { SetValue(ButtonTextTwoProperty, value); }
+        }
+        /// <summary>
+        /// Get or set if Buttons can be shown 
+        /// </summary>
+        public bool IsButtonsHidden
+        {
+            get => (bool)GetValue(IsButtonsHiddenProperty);
+            set => SetValue(IsButtonsHiddenProperty, value);
         }
 
         

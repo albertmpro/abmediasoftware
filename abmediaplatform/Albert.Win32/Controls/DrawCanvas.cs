@@ -25,20 +25,7 @@ namespace Albert.Win32.Controls
 
         public static readonly DependencyProperty DrawModeProperty = DP("DrawMode", typeof(DrawMode), typeof(DrawCanvas), DrawMode.Draw);
 
-        public static readonly DependencyProperty BrushColorProperty = DP("BrushColor", typeof(Color), typeof(DrawCanvas), Colors.Black, (sender, e) =>
-                {
-                    var canvas = (DrawCanvas)sender;
-                    //Get the Brush Opacity  
-                    var alpha = canvas.BrushOpacity;
-                    //Get the Value of the Color 
-                    var color = (Color)e.NewValue;
-                    //Set the color based on opacity 
-                    var setcolor = Color.FromArgb(alpha, color.R, color.G, color.B);
-                    //Set Bursh Color on Artboard 
-                    canvas.DefaultDrawingAttributes.Color = setcolor;
-
-
-                });
+        public static readonly DependencyProperty BrushColorProperty = DP("BrushColor", typeof(Color), typeof(DrawCanvas), Colors.Black);
 
         public static readonly DependencyProperty BrushSizeProperty = DP("BrushSize", typeof(double), typeof(DrawCanvas), 10.4, (sender, e) =>
             {
@@ -57,6 +44,25 @@ namespace Albert.Win32.Controls
             });
 
         public static readonly DependencyProperty BrushOpacityProperty = DP("BrushOpacity", typeof(byte), typeof(DrawCanvas));
+
+
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //Get the Brush Opacity  
+            var alpha = BrushOpacity;
+            //Color 
+            var color = BrushColor;
+        
+            //Set the color based on opacity 
+            var setcolor = Color.FromArgb(alpha, color.R, color.G, color.B);
+            //Set Bursh Color on Artboard 
+            DefaultDrawingAttributes.Color = setcolor;
+            //Set the Brush Color 
+            BrushColor = setcolor;
+
+            base.OnPropertyChanged(e);
+        }
+
 
 
 
@@ -81,18 +87,6 @@ namespace Albert.Win32.Controls
         #endregion
 
         #region Method's and Tuple's 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -196,8 +190,5 @@ namespace Albert.Win32.Controls
         Draw, Erase, EraseByStroke, Select, Rectangle, Circle, Line
     }
 
-    public enum BrushPresets
-    {
-        Pencil, Marker, Pen
-    }
+
 }

@@ -6,31 +6,50 @@ using System.Windows.Input;
 using System.ComponentModel;
 namespace Albert.Win32.Controls
 {
-	/// <summary>
-	/// A special ContentControl designed to deal with handling tab documents. 
-	/// </summary>
-	public class DocumentControl : ContentControl, IAddCommand, ICurrentFile
-	{
+    /// <summary>
+    /// A special Control design to deal with documents for TabControl and or Frame Navigations. 
+    /// </summary>
+    public class DocumentControl : ContentControl, IAddCommand, ICurrentFile
+    {
         #region Depedency Properties
-        public static DependencyProperty TopDialogBarProperty = DependencyProperty.Register("TopDialogBar", typeof(object),typeof(DocumentControl),null);
+        public static DependencyProperty TopDialogBarProperty = DependencyProperty.Register("TopDialogBar", typeof(object), typeof(DocumentControl), null);
         public static DependencyProperty BottomDialogBarProperty = DependencyProperty.Register("BottomDialogBar", typeof(object), typeof(DocumentControl), null);
         public static DependencyProperty TopDialogVisibilityProperty = DependencyProperty.Register("TopDialogVisibility", typeof(Visibility), typeof(DocumentControl), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty BottomDialogVisibilityProperty = DependencyProperty.Register("BottomDialogVisibility", typeof(Visibility), typeof(DocumentControl), new PropertyMetadata(Visibility.Visible));
-        
+
         #endregion
         public DocumentControl()
-		{
+        {
             //ReDraw the Control 
             DefaultStyleKey = typeof(DocumentControl);
-            //Do the Logic Method 
-            Logic();
-	    }
-
-        void Logic()
-        {
-            //Run the OnLogic Function 
-            OnLogic();
+          
         }
+
+        /// <summary>
+        /// Remove Tab Method  
+        /// </summary>
+        public void RemoveTab()
+        {
+            TabItem?.RemoveTab();
+        }
+        /// <summary>
+        /// Setup the FileInfo and Tab
+        /// </summary>
+        /// <param name="_info"></param>
+        public void SetupFileAndTab(FileInfo _info)
+        {
+            //Set the File info 
+            FileInfo = _info;
+            //Set File Location  
+            FileLocation = _info.FullName;
+            //Set TabItem Header 
+            TabItem.Header = _info.Name;
+        }
+   
+
+
+
+
 
         #region Method's for Creating Tab's Quickly
         /// <summary>
@@ -39,10 +58,13 @@ namespace Albert.Win32.Controls
         /// <param name="_header"></param>
         /// <param name="_isClosedEnabled"></param>
         /// <param name="_tab"></param>
-        public void SetupTab(string _header,bool _isClosedEnabled,TabControl _tab)
+        public void SetupTab(string _header, bool _isClosedEnabled, TabControl _tab)
         {
             //Create a new TabItem 
-            TabItem = new DocumentTabItem(_header, _isClosedEnabled , this, _tab);
+            TabItem = new DocumentTabItem(_header, _isClosedEnabled, this, _tab);
+            //Focus on the Tab 
+            TabItem.Focus();
+            this.Focus();
 
         }
         /// <summary>
@@ -51,14 +73,14 @@ namespace Albert.Win32.Controls
         /// <param name="_tab">TabItem</param>
         /// <param name="_fileName">FileName</param>
         /// <param name="__method">Close Method</param>
-        public void SetupTabAndLoadFile(TabControl _tab,FileInfo _info,Action __method)
+        public void SetupTab(TabControl _tab, FileInfo _info, Action __method)
         {
             FileInfo = _info;
             FileLocation = _info.FullName;
 
             //Create a new TabItem 
             TabItem = new DocumentTabItem(_info.Name, this, _tab);
-
+            FileLocation = _info.FullName;
             //Close Method 
             TabItem.Closed += (sender, e) =>
             {
@@ -71,7 +93,7 @@ namespace Albert.Win32.Controls
         }
 
 
-        public void SetupTab(string _header,TabControl _tab,Action _closeMethod)
+        public void SetupTab(string _header, TabControl _tab, Action _closeMethod)
         {
             //Create a new TabItem 
             TabItem = new DocumentTabItem(_header, this, _tab);
@@ -89,6 +111,8 @@ namespace Albert.Win32.Controls
         }
 
         #endregion
+
+   
 
 
         #region Method from IAddCommand 
@@ -113,6 +137,13 @@ namespace Albert.Win32.Controls
         public virtual void OnLogic()
         {
             //Do nothing for now 
+        }
+        /// <summary>
+        /// A method to excute on Tabclosed 
+        /// </summary>
+        public virtual void OnTabClosed()
+        {
+
         }
         
         /// <summary>
@@ -147,6 +178,8 @@ namespace Albert.Win32.Controls
             set { SetValue(TopDialogVisibilityProperty, value); }
         }
 
+        
+
 
         public Visibility BottomDialogVisibility
         {
@@ -170,7 +203,20 @@ namespace Albert.Win32.Controls
         /// </summary>
         public TabControl MainTabControl { get; set; }
 
+
+
+        public object TabHeader
+        {
+            get => TabItem.Header;
+            set { TabItem.Header = value; }
+        }
+
+        /// <summary>
+        /// Gets or Sets a Url to a FIle you are working on 
+        /// </summary>
         public string FileLocation { get; set; }
+
+        public DirectoryInfo FileDirectory { get; set; }
 
 		public FileInfo FileInfo { get; set; }
         /// <summary>

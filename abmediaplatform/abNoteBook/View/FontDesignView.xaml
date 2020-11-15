@@ -1,0 +1,30 @@
+﻿<local:ABView x:Class="abNoteBook.View.FontDesignView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:abNoteBook.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+		<TabControl>
+			<c:DocumentTabItem Header="Font List">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="250" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<!-- FontFamily ListBox-->
+					<ListBox x:Name="lstFont" Style="{StaticResource lstFontFamily}" />
+					<!-- Font Example -->
+					<Grid Grid.Column="1">
+
+					</Grid>
+				</Grid>
+			</c:DocumentTabItem>
+
+		</TabControl>
+
+	</Grid>
+</local:ABView>

@@ -1,0 +1,40 @@
+﻿<local:ABView x:Class="abNoteBook.View.MediaPlayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:abNoteBook.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<!-- ToolBar -->
+		<ToolBarTray>
+			<ToolBar>
+				<c:PushButton Command="Open" Source="/Images/appbar/file.png" />
+			</ToolBar>
+		</ToolBarTray>
+		<!-- Main Viewer  -->
+        <c:ZoomBox Grid.Row="1">
+			<c:MediaPlayback Margin="3" x:Name="myplayer" />
+		</c:ZoomBox>
+        <!-- Media Controls -->
+		<c:ZoomBox Grid.Row="2">
+			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+				<c:PushButton ToolTip="Fast Rewind" Tag="FastRewind" Click="Media_Click" Content="&lt;&lt;" />
+				<c:PushButton ToolTip="Rewind" Tag="Rewind" Click="Media_Click" Content="&lt;" />
+				<c:PushButton ToolTip="Play" Tag="Play" Click="Media_Click" Content="Play" />
+				<c:PushButton  ToolTip="Pause" Tag="Pause" Click="Media_Click"  Content="Pause" />
+				<c:PushButton ToolTip="Stop" Tag="Stop" Click="Media_Click" Content="Stop" />
+				<c:PushButton ToolTip="Forward" Tag="Forward" Click="Media_Click" Content="&gt;" />
+				<c:PushButton ToolTip="Fast Forward" Tag="FastForward" Click="Media_Click" Content="&gt;&gt;" />
+			</StackPanel>
+		</c:ZoomBox>
+
+	</Grid>
+</local:ABView>

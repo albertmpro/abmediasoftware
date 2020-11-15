@@ -36,8 +36,12 @@ namespace Albert.Win32.Controls
         #endregion
 
 
+        #region Events 
 
- 
+        public event Action<Color> OnColorSelected;
+
+        #endregion 
+
 
         #region Override's 
         protected override void OnRender(DrawingContext dc)
@@ -76,6 +80,11 @@ namespace Albert.Win32.Controls
                 cachedTargetBitmap = null; // TargetBitmap cache isn't valid anymore.
                 Position = new Point(); // Move the selector to the top-left corner.
             }
+            //Execute OnColorSelected 
+            var color = this.SelectedColor;
+            OnColorSelected?.Invoke(color);
+
+
             base.OnPropertyChanged(e);
         }
 
@@ -122,7 +131,7 @@ namespace Albert.Win32.Controls
             SaveDialogTask(title, filter, (s,i) =>
               {
                   //Load the Image 
-                  ImageFile(this, s.FileName);
+                  LoadImageFile(this, s.FileName);
               
               });
         }
@@ -169,8 +178,7 @@ namespace Albert.Win32.Controls
             if (Source == null)
                 throw new InvalidOperationException("Image Source not set");
 
-            BitmapSource bitmapSource = Source as BitmapSource;
-            if (bitmapSource != null)
+            if (Source is BitmapSource bitmapSource)
             { // Get color from bitmap pixel.
               // Convert coopdinates from WPF pixels to Bitmap pixels and restrict them by the Bitmap bounds.
                 x *= bitmapSource.PixelWidth / ActualWidth;
@@ -222,8 +230,7 @@ namespace Albert.Win32.Controls
                 // TODO There are other PixelFormats which processing should be added if desired.
             }
 
-            DrawingImage drawingImage = Source as DrawingImage;
-            if (drawingImage != null)
+            if (Source is DrawingImage drawingImage)
             { // Get color from drawing pixel.
                 RenderTargetBitmap targetBitmap = TargetBitmap;
                 Debug.Assert(targetBitmap != null, "targetBitmap != null");
@@ -344,8 +351,7 @@ namespace Albert.Win32.Controls
             {
                 if (cachedTargetBitmap == null)
                 {
-                    DrawingImage drawingImage = Source as DrawingImage;
-                    if (drawingImage != null)
+                    if (Source is DrawingImage drawingImage)
                     {
                         DrawingVisual drawingVisual = new DrawingVisual();
                         using (DrawingContext drawingContext = drawingVisual.RenderOpen())
