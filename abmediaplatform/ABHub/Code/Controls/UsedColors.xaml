@@ -1,0 +1,33 @@
+﻿<local:HubView x:Class="ABHub.Code.Controls.UsedColors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:local="clr-namespace:ABHub.Code.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"  d:DesignWidth="800">
+    <Grid>
+        <Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition Height="auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="25" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<ListBox x:Name="lstColor"  ItemsPanel="{StaticResource wrapPanel}" ItemTemplate="{StaticResource solidColor}" ItemsSource="{Binding UsedColors}" />
+					<GridSplitter Grid.RowSpan="2" Grid.Column="1" />
+					<c:ZoomBox Grid.Column="2">
+						<local:MainColorPicker x:Name="colorPicker" />
+					</c:ZoomBox>
+					<StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+						<c:PushButton Tag="Add" Click="Color_Click" x:Name="btnAddColor" ToolTip="Add Color" Width="75" Content="+" />
+						<c:PushButton Tag="Remove" Click="Color_Click" x:Name="btnRemoveColor" ToolTip="Remove Color" Width="75" Content="-" />
+						<c:PushButton Tag="Clear" Click="Color_Click" x:Name="btnClearColor" ToolTip="Clear Colors" Width="75" Content="Clear" />
+					</StackPanel>
+				</Grid>    
+    </Grid>
+</local:HubView>

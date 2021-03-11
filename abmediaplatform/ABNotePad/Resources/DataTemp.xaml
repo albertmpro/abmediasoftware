@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ABNotePad.Code">
+ 
+ 	<!--#region Preset FontFamily Boxes-->
+	<Style TargetType="ListBox" x:Key="lstFontFamily">
+		<Setter Property="ItemsSource" Value="{x:Static Fonts.SystemFontFamilies}" />
+	</Style>
+	<Style TargetType="ComboBox" x:Key="cmbFontFamily">
+		<Setter Property="ItemsSource" Value="{x:Static Fonts.SystemFontFamilies}" />
+	</Style>
+
+	<ItemsPanelTemplate x:Key="wrapPanel">
+		<WrapPanel Orientation="Vertical" />
+	</ItemsPanelTemplate>
+
+
+	<DataTemplate x:Key="solidColor">
+		<Rectangle Width="35" Height="35" ToolTip="{Binding HtmlHex}" Stroke="White" StrokeThickness="1.5">
+			<Rectangle.Fill>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Rectangle.Fill>
+		</Rectangle>
+	</DataTemplate>
+
+
+
+	<!--#endregion -->
+
+
+</ResourceDictionary>

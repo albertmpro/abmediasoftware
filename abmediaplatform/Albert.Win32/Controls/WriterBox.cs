@@ -5,18 +5,31 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace Albert.Win32.Controls
 {
     /// <summary>
     /// A special TextBox used for writing documents 
     /// </summary>
-    public class WriterBox: TextBox 
+    public class WriterBox: TextBox, IAddCommand  
     {
         public WriterBox()
         {
+
+
+            #region Commands 
+
+           
+
+
+            #endregion 
+
+
             SpellCheck.IsEnabled = true;
 
+            
+            
             //Make sure spell check shows up no matter what the context menu
             ContextMenuOpening += (sender, e) =>
             {
@@ -64,7 +77,14 @@ namespace Albert.Win32.Controls
             
             };
         }
-
-
+        /// <summary>
+        /// Simplafy Addiing Commands 
+        /// </summary>
+        /// <param name="_command"></param>
+        /// <param name="_method"></param>
+        public void AddCommand(ICommand _command, ExecutedRoutedEventHandler _method)
+        {
+            CommandBindings.Add(new CommandBinding(_command, _method));
+        }
     }
 }

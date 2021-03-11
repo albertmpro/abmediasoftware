@@ -1,0 +1,102 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+					xmlns:local="clr-namespace:ABTubePad.Code">
+    
+    <!--#region ViewModel -->
+
+	<local:TubeViewModel x:Key="viewModel" />
+
+
+	<!--#endregion-->
+
+
+	<!--#region Converters -->
+	<w:ColorToBrushConverter x:Key="ColorToBrush" />
+	<!--#endregion -->
+
+
+    <!--#region Brushes and Colors-->
+
+	<SolidColorBrush x:Key="abBackground" Color="#FF141212" />
+	<SolidColorBrush x:Key="abForeground" Color="#ffffffff" />
+	<SolidColorBrush x:Key="abAccent" Color="#FF9C3313" />
+	<SolidColorBrush x:Key="abAccent2" Color="#FFB23115" />
+	<SolidColorBrush x:Key="abAccent3" Color="#FFBD6047" />
+	<SolidColorBrush x:Key="abAccent4" Color="#FFCA6552" />
+	<SolidColorBrush x:Key="abAccent5" Color="#FFE6B0A4" />
+
+	<SolidColorBrush x:Key="abChulkBoard" Color="#FF046318" />
+	<SolidColorBrush x:Key="abBlackBoard" Color="#FF232323" />
+	<SolidColorBrush x:Key="abBlueBoard" Color="#FF161479" />
+	<Color x:Key="abBackgroundColor" >#FF141212</Color>
+	<Color x:Key="abForegroundColor" >#ffffffff</Color>
+	<Color x:Key="abAccentColor" >#FF9C3313</Color>
+	<Color x:Key="abAccentColor2" >#FFB23115</Color>
+	<Color x:Key="abAccentColor3" >#FFDB4125</Color>
+	<Color x:Key="abAccentColor4" >#FFCA6552</Color>
+	<Color x:Key="abAccentColor5" >#FFE6B0A4</Color>
+
+	<RadialGradientBrush x:Key="abRadialChrome">
+		<GradientStop Offset="1" Color="{StaticResource abAccentColor}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor4}" />
+	</RadialGradientBrush>
+
+		<RadialGradientBrush x:Key="abRadialredChrome">
+		<GradientStop Offset="1" Color="{StaticResource abAccentColor}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor2}" />
+	</RadialGradientBrush>
+		<RadialGradientBrush x:Key="abRadialGreenChrome">
+		<GradientStop Offset="1" Color="DarkGreen" />
+		<GradientStop Offset="0" Color="Green" />
+	</RadialGradientBrush>
+
+	<RadialGradientBrush x:Key="abRadialChrome2">
+		<GradientStop Offset="1" Color="{StaticResource abBackgroundColor}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor3}" />
+	</RadialGradientBrush>
+
+	<RadialGradientBrush x:Key="abRadialChrome3">
+		<GradientStop Offset="1" Color="{StaticResource abAccentColor3}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor4}" />
+	</RadialGradientBrush>
+
+	<RadialGradientBrush x:Key="abRadialChrome4">
+		<GradientStop Offset="1" Color="{StaticResource abBackgroundColor}" />
+		<GradientStop Offset="0" Color="#FF383331" />
+	</RadialGradientBrush>
+	<RadialGradientBrush x:Key="abRadialChrome5">
+		<GradientStop Offset="1" Color="#FF333333" />
+		<GradientStop Offset="0" Color="#FF706F6F" />
+	</RadialGradientBrush>
+
+	<LinearGradientBrush x:Key="abLinearChrome">
+		<GradientStop Offset="1" Color="{StaticResource abAccentColor}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor2}" />
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="abLinearChrome2">
+		<GradientStop Offset="1" Color="{StaticResource abBackgroundColor}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor3}" />
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="abLinearChrome3">
+		<GradientStop Offset="1" Color="{StaticResource abAccentColor3}" />
+		<GradientStop Offset="0" Color="{StaticResource abAccentColor4}" />
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="abLinearChrome4">
+		<GradientStop Offset="1" Color="{StaticResource abBackgroundColor}" />
+		<GradientStop Offset="0" Color="#FF6E6E6E" />
+	</LinearGradientBrush>
+	<LinearGradientBrush x:Key="abLinearChrome5">
+		<GradientStop Offset="1" Color="#FF333333" />
+		<GradientStop Offset="0" Color="#FF706F6F" />
+	</LinearGradientBrush>
+
+
+
+	<!--#endregion -->
+
+
+</ResourceDictionary>

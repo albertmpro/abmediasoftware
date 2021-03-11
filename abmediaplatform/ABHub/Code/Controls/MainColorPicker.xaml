@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ABHub.Code.Controls.MainColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:local="clr-namespace:ABHub.Code.Controls"
+             >
+            
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition Width="auto" />
+		</Grid.ColumnDefinitions>
+		<!-- Main Image Picker-->
+	<c:ZoomBox Width="400" Height="400" >
+		<c:ImageColorCanvas x:Name="imgColor" Stretch="Uniform" Source="/Images/AB_Colors_1.png"  />
+	</c:ZoomBox>
+	<!-- Selected Color -->
+		<StackPanel Grid.Row="1">
+			<Rectangle Margin="15" Width="75" Height="75" x:Name="rectColor" Fill="{Binding ElementName=imgColor,Path=SelectedColor,Converter={StaticResource ColorToBrush}}" />
+		</StackPanel>
+		<StackPanel Grid.Column="1">
+			<c:OptionButton Tag="Color1" x:Name="optColor1" Click="select_Click" Source="/Images/AB_Colors_1.png"  />
+			<c:OptionButton Tag="Color2" x:Name="optColor2" Click="select_Click" Source="/Images/AB_Colors_2.png"  />
+			<c:OptionButton Tag="Color3" x:Name="optColor3" Click="select_Click"  Source="/Images/ABPaintColors_1.png"  />
+
+				<c:OptionButton Click="select_Click" Tag="Color4" x:Name="optColor4" Source="/Images/ABPaintColors_4.png"  />
+			<c:OptionButton x:Name="optCustom" Click="select_Click" Source="/images/sample.png" Tag="Custom"  />
+			<c:PushButton Content="..." Click="Load_Click" Width="50" Height="50" />
+		</StackPanel>
+
+
+
+
+
+	</Grid>
+</UserControl>

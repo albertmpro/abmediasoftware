@@ -1,0 +1,101 @@
+﻿<local:PadView x:Class="ABNotePad.View.StartNote"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ic="http://icsharpcode.net/sharpdevelop/avalonedit"
+            
+			 xmlns:local="clr-namespace:ABNotePad.Code.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" DataContext="{StaticResource viewModel}" d:DesignWidth="800">
+	<Grid>
+		<!-- TextBox's -->
+		<Grid Grid.Row="1">
+			<TabControl x:Name="startTab">
+			
+				<c:DocumentTabItem Header="StartNote">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto" />
+							<RowDefinition Height="auto" />
+							<RowDefinition />
+							<RowDefinition Height="auto " />
+						</Grid.RowDefinitions>
+						<ToolBarTray>
+							<ToolBar>
+								<c:PushButton Command="New" Source="/images/appbar/add.png" />
+								<c:PushButton Command="Open" Source="/images/appbar/file.png" />
+							</ToolBar>
+						</ToolBarTray>
+						<!--New Item Grid-->
+						<Grid x:Name="gridNew" Visibility="Collapsed" Grid.Row="1" Margin="5,0">
+
+							<TextBlock>
+							<Line StrokeThickness="2.5" Stroke="WHite" X1="0" X2="750" />
+							<LineBreak />
+							<Hyperlink Tag="Text"  Click="hyperLink_Click" ToolTip="New Text Document">New Text Document</Hyperlink>
+							<LineBreak /> 
+							<Hyperlink Tag="Draw" Click="hyperLink_Click"  ToolTip="New Draw Document">New Draw Document</Hyperlink>
+							<LineBreak /> 
+							<LineBreak />
+							<Line StrokeThickness="2.5" Stroke="WHite" X1="0" X2="750" />
+							<LineBreak />
+							</TextBlock>
+
+						</Grid>
+
+						<!-- TextEditor -->
+						<ic:TextEditor ToolTip="Start Note" Grid.Row="2" x:Name="txtCode"  />
+
+						<!-- Add Button-->
+						<StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal">
+							<c:PushButton Click="AddNote_Click" ToolTip="Add Note" Tag="AddNote" Width="75" Content="+" />
+						</StackPanel>
+					</Grid>
+				</c:DocumentTabItem>
+				<c:DocumentTabItem Header="ArtBoard's">
+					
+					<local:Artboards x:Name="artBoards" />
+
+				</c:DocumentTabItem>
+			<c:DocumentTabItem Header="Notes Taken">
+					<local:NotesTaken x:Name="notesTaken" />
+				</c:DocumentTabItem>
+			<c:DocumentTabItem Header="Used Colors">
+					<local:UsedColors x:Name="usedColors" />
+				</c:DocumentTabItem>
+				<c:DocumentTabItem ToolTip="Youtube Writer" Header="YT">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<!--Video Script-->
+						<ic:TextEditor x:Name="txtScript" Grid.Column="0" />
+						<GridSplitter Grid.Column="1" />
+						<!-- Youtube Info-->
+						<c:WriterBox Grid.Column="2" ToolTip="Youtube Information"  x:Name="txtInfo" />
+						<!-- Split-->
+						<GridSplitter Grid.Column="3" />
+						<!-- Youtube Tags -->
+						<c:WriterBox ToolTip="YouTube Tags" x:Name="txtTags" Grid.Column="4" />
+					</Grid>
+				</c:DocumentTabItem>
+			
+
+
+
+
+
+
+			</TabControl>
+		</Grid>
+
+
+	</Grid>
+</local:PadView>

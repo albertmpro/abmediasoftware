@@ -1,0 +1,147 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\abtubpad.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\abTubePad.png" />
+    <None Remove="Images\appbar\about.png" />
+    <None Remove="Images\appbar\add.png" />
+    <None Remove="Images\appbar\aHubWide.png" />
+    <None Remove="Images\appbar\Area.png" />
+    <None Remove="Images\appbar\areaRoad.png" />
+    <None Remove="Images\appbar\back.png" />
+    <None Remove="Images\appbar\bold.png" />
+    <None Remove="Images\appbar\Browser.png" />
+    <None Remove="Images\appbar\bullets.png" />
+    <None Remove="Images\appbar\camera.png" />
+    <None Remove="Images\appbar\cancel.png" />
+    <None Remove="Images\appbar\centeralign.png" />
+    <None Remove="Images\appbar\circle.png" />
+    <None Remove="Images\appbar\clear.png" />
+    <None Remove="Images\appbar\clock.png" />
+    <None Remove="Images\appbar\code.bmp" />
+    <None Remove="Images\appbar\codeicon.png" />
+    <None Remove="Images\appbar\colorLabIcon.png" />
+    <None Remove="Images\appbar\colorpicker.png" />
+    <None Remove="Images\appbar\colorpicker2.png" />
+    <None Remove="Images\appbar\colorpicker3.png" />
+    <None Remove="Images\appbar\earthcolors.png" />
+    <None Remove="Images\appbar\edit.png" />
+    <None Remove="Images\appbar\erase.png" />
+    <None Remove="Images\appbar\export.png" />
+    <None Remove="Images\appbar\file.png" />
+    <None Remove="Images\appbar\forward.png" />
+    <None Remove="Images\appbar\goback.png" />
+    <None Remove="Images\appbar\icons.png" />
+    <None Remove="Images\appbar\Import.png" />
+    <None Remove="Images\appbar\Italic.png" />
+    <None Remove="Images\appbar\leftalign.png" />
+    <None Remove="Images\appbar\line.png" />
+    <None Remove="Images\appbar\marker.png" />
+    <None Remove="Images\appbar\numberlist.png" />
+    <None Remove="Images\appbar\ok.png" />
+    <None Remove="Images\appbar\paint.png" />
+    <None Remove="Images\appbar\pen.png" />
+    <None Remove="Images\appbar\pencil.png" />
+    <None Remove="Images\appbar\rectangle.png" />
+    <None Remove="Images\appbar\refresh.png" />
+    <None Remove="Images\appbar\remove.png" />
+    <None Remove="Images\appbar\rightalign.png" />
+    <None Remove="Images\appbar\road.png" />
+    <None Remove="Images\appbar\save.png" />
+    <None Remove="Images\appbar\saveas.png" />
+    <None Remove="Images\appbar\search.png" />
+    <None Remove="Images\appbar\settings.png" />
+    <None Remove="Images\appbar\share.png" />
+    <None Remove="Images\appbar\showNavBar.png" />
+    <None Remove="Images\appbar\SkinColors.png" />
+    <None Remove="Images\appbar\star.png" />
+    <None Remove="Images\appbar\start.png" />
+    <None Remove="Images\appbar\status.png" />
+    <None Remove="Images\appbar\textedit.png" />
+    <None Remove="Images\appbar\trace.png" />
+    <None Remove="Images\appbar\triangle.png" />
+    <None Remove="Images\appbar\underline.png" />
+    <None Remove="Images\appbar\writericon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Albert.Win32\Albert.Win32.csproj" />
+    <ProjectReference Include="..\Albert\Albert.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\abTubePad.png" />
+    <Resource Include="Images\appbar\about.png" />
+    <Resource Include="Images\appbar\add.png" />
+    <Resource Include="Images\appbar\aHubWide.png" />
+    <Resource Include="Images\appbar\Area.png" />
+    <Resource Include="Images\appbar\areaRoad.png" />
+    <Resource Include="Images\appbar\back.png" />
+    <Resource Include="Images\appbar\bold.png" />
+    <Resource Include="Images\appbar\Browser.png" />
+    <Resource Include="Images\appbar\bullets.png" />
+    <Resource Include="Images\appbar\camera.png" />
+    <Resource Include="Images\appbar\cancel.png" />
+    <Resource Include="Images\appbar\centeralign.png" />
+    <Resource Include="Images\appbar\circle.png" />
+    <Resource Include="Images\appbar\clear.png" />
+    <Resource Include="Images\appbar\clock.png" />
+    <Resource Include="Images\appbar\code.bmp" />
+    <Resource Include="Images\appbar\codeicon.png" />
+    <Resource Include="Images\appbar\colorLabIcon.png" />
+    <Resource Include="Images\appbar\colorpicker.png" />
+    <Resource Include="Images\appbar\colorpicker2.png" />
+    <Resource Include="Images\appbar\colorpicker3.png" />
+    <Resource Include="Images\appbar\earthcolors.png" />
+    <Resource Include="Images\appbar\edit.png" />
+    <Resource Include="Images\appbar\erase.png" />
+    <Resource Include="Images\appbar\export.png" />
+    <Resource Include="Images\appbar\file.png" />
+    <Resource Include="Images\appbar\forward.png" />
+    <Resource Include="Images\appbar\goback.png" />
+    <Resource Include="Images\appbar\icons.png" />
+    <Resource Include="Images\appbar\Import.png" />
+    <Resource Include="Images\appbar\Italic.png" />
+    <Resource Include="Images\appbar\leftalign.png" />
+    <Resource Include="Images\appbar\line.png" />
+    <Resource Include="Images\appbar\marker.png" />
+    <Resource Include="Images\appbar\numberlist.png" />
+    <Resource Include="Images\appbar\ok.png" />
+    <Resource Include="Images\appbar\paint.png" />
+    <Resource Include="Images\appbar\pen.png" />
+    <Resource Include="Images\appbar\pencil.png" />
+    <Resource Include="Images\appbar\rectangle.png" />
+    <Resource Include="Images\appbar\refresh.png" />
+    <Resource Include="Images\appbar\remove.png" />
+    <Resource Include="Images\appbar\rightalign.png" />
+    <Resource Include="Images\appbar\road.png" />
+    <Resource Include="Images\appbar\save.png" />
+    <Resource Include="Images\appbar\saveas.png" />
+    <Resource Include="Images\appbar\search.png" />
+    <Resource Include="Images\appbar\settings.png" />
+    <Resource Include="Images\appbar\share.png" />
+    <Resource Include="Images\appbar\showNavBar.png" />
+    <Resource Include="Images\appbar\SkinColors.png" />
+    <Resource Include="Images\appbar\star.png" />
+    <Resource Include="Images\appbar\start.png" />
+    <Resource Include="Images\appbar\status.png" />
+    <Resource Include="Images\appbar\textedit.png" />
+    <Resource Include="Images\appbar\trace.png" />
+    <Resource Include="Images\appbar\triangle.png" />
+    <Resource Include="Images\appbar\underline.png" />
+    <Resource Include="Images\appbar\writericon.png" />
+  </ItemGroup>
+
+  <Import Project="..\abmediaplatform\abmediaplatform.projitems" Label="Shared" />
+
+</Project>

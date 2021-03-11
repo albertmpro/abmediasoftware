@@ -1,0 +1,56 @@
+﻿<local:HubView
+x:Class="ABHub.View.FontLabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ABHub.Code.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+		<TabControl>
+			<c:DocumentTabItem  Header="All Font" >
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="auto" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<!-- List of All Fonts -->
+					<ListBox x:Name="lst" Background="{StaticResource abBackground}" Style="{StaticResource lstFontFamily}" />
+					<!-- Display Font -->
+					<ScrollViewer Grid.Column="1">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="auto" />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<StackPanel>
+								<TextBlock x:Name="tb48" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="48" Text="Example Text 48pt" />
+								<TextBlock x:Name="tb32" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="32" Text="Example Text 32pt" />
+								<TextBlock x:Name="tb24" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="24" Text="Example Text 24pt" />
+								<TextBlock x:Name="tb20" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="20" Text="Example Text 20pt" />
+								<TextBlock x:Name="tb14" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="14" Text="Example Text 14pt" />
+								<TextBlock x:Name="tb12" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="12" Text="Example Text 12pt" />
+								<TextBlock x:Name="tb10" FontFamily="{Binding ElementName=lst,Path=SelectedItem}" FontSize="10" Text="Example Text 10pt" />
+							</StackPanel>
+							<Grid Grid.Row="1" >
+								<Grid.RowDefinitions>
+									<RowDefinition Height="auto" />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+								<TextBlock  FontFamily="{Binding ElementName=lst,Path=SelectedItem}" Text="Sample Text" />
+								<c:WriterBox Grid.Row="1" x:Name="txtSample"  FontFamily="{Binding ElementName=lst,Path=SelectedItem}" />
+								
+							</Grid>
+
+						</Grid>
+					</ScrollViewer>
+				</Grid>
+			</c:DocumentTabItem>
+		</TabControl>
+
+	</Grid>
+</local:HubView>

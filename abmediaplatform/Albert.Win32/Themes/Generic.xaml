@@ -15,6 +15,40 @@
 
 	<!--#endregion -->
 
+	<Style TargetType="desktop:ConceptControl">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="desktop:ConceptControl">
+					<Border BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding PrimaryColor}">
+						<Grid >
+							<desktop:DrawCanvas x:Name="PART_DrawCanvas" />
+
+							<StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+
+								<desktop:OptionButton x:Name="PART_PrimaryButton" IsChecked="{TemplateBinding PrimaryIsChecked}" ToolTip="Primary Color" Background="{TemplateBinding PrimaryColor }" BackgroundChecked="{TemplateBinding PrimaryColor}"  Margin=".3" BorderBrush="Transparent" Height="50" Width="50" />
+								
+								<desktop:OptionButton x:Name="PART_SecondaryButton"  Background="{TemplateBinding SecondaryColor }" BackgroundChecked="{TemplateBinding SecondaryColor}" IsChecked="{TemplateBinding SecondaryIsChecked}"  ToolTip="Secondary Color" Margin=".3" BorderBrush="Transparent" Width="50" Height="50"  />
+								
+								<desktop:OptionButton x:Name="PART_Accent1Button" IsChecked="{TemplateBinding AccentIsCheckedOne}"  ToolTip="Accent Color 1" Margin=".3"  Background="{TemplateBinding AccentColorOne }" BackgroundChecked="{TemplateBinding AccentColorOne}" BorderBrush="Transparent" Width="50" Height="50"  />
+								
+								<desktop:OptionButton x:Name="PART_Accent2Button" IsChecked="{TemplateBinding AccentIsCheckedTwo}"  ToolTip="Accent Color 2"  Margin=".3"  Background="{TemplateBinding AccentColorTwo }" BackgroundChecked="{TemplateBinding AccentColorTwo}" BorderBrush="Transparent" Width="50" Height="50"  />
+								
+								<desktop:OptionButton x:Name="PART_Accent3Button" IsChecked="{TemplateBinding AccentIsCheckedThree}"  ToolTip="Accent Color 3"  Background="{TemplateBinding AccentColorThree }" BackgroundChecked="{TemplateBinding AccentColorThree}"  Margin=".3" BorderBrush="Transparent" Width="50" Height="50"  />
+							</StackPanel>
+
+						</Grid>
+
+
+					</Border>
+
+				</ControlTemplate>
+
+			</Setter.Value>
+		</Setter>
+
+	</Style>
+
+
 	<Style TargetType="desktop:BitmapColorPicker">
 
 		<Setter Property="Template">

@@ -1,0 +1,106 @@
+﻿<local:PadView x:Class="ABNotePad.View.HelpView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ABNotePad.Code.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+    <TabControl x:Name="helpTab">
+			<c:DocumentTabItem Header="About" >
+            <Grid>
+        
+        <Grid.RowDefinitions>
+						<RowDefinition Height="auto" />
+						<RowDefinition />
+						<RowDefinition Height="auto" />
+					</Grid.RowDefinitions>
+
+
+            <Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+                    <!-- Title -->
+					<TextBlock VerticalAlignment="Center" FontSize="30" FontWeight="Black" TextAlignment="Center" Text="AB NotePad" />
+					<!-- Image -->
+					<Image Grid.Row="1" Source="/Images/abNotePad.png" />
+                    <!-- Creator Text -->
+                    <TextBlock TextAlignment="Center" Grid.Row="2">
+                    <Run>Created by</Run>
+                    <LineBreak />
+                    <Run>Albert M. Byrd</Run>
+					</TextBlock>
+                    <!-- Description Text-->
+                    <TextBlock TextWrapping="Wrap" Grid.Column="1">
+                    <Run FontWeight="Black">Description:</Run>
+                    <Run>A special Digital Pad to take notes, write scripts for Youtube, and to Draw / Sketch out Idea's. This program can also be used to review images, and video's that have been created. </Run>
+                    <LineBreak />
+                    <LineBreak />
+              
+					</TextBlock>
+
+				</Grid>
+            </c:DocumentTabItem>
+            <c:DocumentTabItem Header="Commands">
+				<Grid>
+					<TextBlock Margin="4" >
+                    <Run FontWeight="Bold">Common Keyboard Commands</Run>
+                    <LineBreak />
+                    <Line Style="{StaticResource tbLine }" X2="500" />
+                    <LineBreak />
+                    <Run FontStyle="Italic" Text="New Prjoect: " />
+                    <Run> Ctrl + N</Run>
+                    <LineBreak />
+                     <Run FontStyle="Italic" Text="Open File: " />
+                     <Run>Ctrl + O</Run>
+                    <LineBreak />
+                      <Run FontStyle="Italic" Text="Save File: " />  
+                      <Run> Ctrl + S</Run>
+                    <LineBreak />
+                      <Run Text="Save As File: " /> 
+                      <Run> Ctrl + Shift + S</Run>
+                    <LineBreak />
+                     <Run FontStyle="Italic" Text="Export: " /> <Run>Ctrl + E</Run>
+                     <LineBreak />
+					</TextBlock>
+				</Grid>
+			</c:DocumentTabItem>
+			<c:DocumentTabItem Header="Note">
+				<Grid>
+					<TextBlock>
+                    <Run>Note is a basic Text Editor designed to take notes, and write code when necessary. You can reatd, write, and save text file with this application.</Run>
+                    <LineBreak />
+                    <Run>Use the Font Slider to change the size of the FOnt </Run>
+                    <LineBreak />
+                    <Run></Run>
+					</TextBlock>
+				</Grid>
+
+			</c:DocumentTabItem>
+            	<c:DocumentTabItem Header="ArtBoard">
+
+			</c:DocumentTabItem>
+            	<c:DocumentTabItem Header="WP Theme">
+
+			</c:DocumentTabItem>
+            	<c:DocumentTabItem Header="Color Theme">
+
+			</c:DocumentTabItem>
+
+            	<c:DocumentTabItem Header="Font Design">
+
+			</c:DocumentTabItem>
+
+
+
+
+
+
+		</TabControl>
+            
+    </Grid>
+</local:PadView>

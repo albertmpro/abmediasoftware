@@ -1,0 +1,72 @@
+﻿<local:PadView x:Class="ABNotePad.View.DrawView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:Albert.Win32.Controls;assembly=Albert.Win32"
+			 xmlns:w="clr-namespace:Albert.Win32;assembly=Albert.Win32"
+             
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ABNotePad.Code.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" DataContext="{StaticResource viewModel}" d:DesignWidth="800">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<ToolBarTray>
+			<ToolBar>
+				<ComboBox ToolTip="Canvas Size" Width="50" SelectionChanged="cmbSizes_SelectionChanged" x:Name="cmbSizes" ItemsSource="{Binding DrawSizes}" />
+				<c:PushButton ToolTip="New Project" Command="New" Source="/Images/appbar/add.png" />
+				<c:PushButton ToolTip="Open File"  Command="Open" Source="/Images/appbar/file.png" />
+				<c:PushButton ToolTip="Save the Artboard"  Command="Save"  Source="/Images/appbar/save.png" />
+				<c:PushButton ToolTip="Save the Artboard as" Command="w:DesktopCommands.SaveAs" Source="/Images/appbar/saveas.png" />
+				<c:PushButton ToolTip="Export the Artboard to png" Command="w:DesktopCommands.Export" Source="/Images/appbar/export.png" />
+			</ToolBar>
+			<ToolBar>
+				<c:OptionButton ToolTip="Draw Brush" Tag="Draw" Click="Select_Click" Source="/images/appbar/paint.png" />
+				<c:OptionButton ToolTip="Erase" Tag="Erase" Click="Select_Click" Source="/images/appbar/erase.png" />
+				<c:OptionButton ToolTip="Erase by Stroke" Tag="EraseByStroke" Click="Select_Click" Source="/images/appbar/line.png" />
+				<c:OptionButton ToolTip="Select" Tag="Select" Click="Select_Click" Source="/images/appbar/edit.png" />
+			</ToolBar>
+		
+			<ToolBar>
+				<Slider x:Name="slFontSize" ToolTip="Brush Size" ValueChanged="slFontSize_ValueChanged" Value="10" Maximum="130" Minimum="3" />
+				<Separator />
+				<c:OptionButton Click="Draw_Click" ToolTip="Pencil Brush" Tag="Pencil" Source="/images/appbar/pencil.png" />
+				<c:OptionButton Click="Draw_Click" ToolTip="Marker Brush" Tag="Marker" Source="/images/appbar/marker.png" />
+				<c:OptionButton Click="Draw_Click" ToolTip="Pen Brush" Tag="Pen" Source="/images/appbar/pen.png" />
+			</ToolBar>
+			<ToolBar>
+				<c:CheckButton ToolTip="Make Background Transparent" IsChecked="False" Click="Transparent_Clcik" x:Name="optTransparent" FontFamily="Segoe Print" FontWeight="Black" FontSize="45" Content="T" />
+				<ComboBox ToolTip="ArtBoard State" x:Name="cmbState" Width="50" SelectionChanged="cmbState_SelectionChanged"  ItemsSource="{Binding ArtBoardList}" />
+			</ToolBar>
+		</ToolBarTray>
+        <!-- Main Grid -->
+		<Grid x:Name="gridMain" Grid.Row="1" >
+			<!-- Used COlors List  -->
+			<c:ZoomBox x:Name="zoomUsedColors">
+				<StackPanel>
+				<c:OptionButton BorderThickness="2.5" Background="Black" Tag="Brush" Click="BrushBack_Click"  ToolTip="Select Brush Color " IsChecked="True" x:Name="optBrushColor" Source="/Images/appbar/pen.png" />
+					<c:OptionButton BorderThickness="2.5" Background="White" Tag="Back" Click="BrushBack_Click" ToolTip="Select Background Color" x:Name="optBackColor"  Source="/Images/appbar/rectangle.png" />
+					<ListBox x:Name="lstUsedColors"  SelectionChanged="lstUsedColors_SelectionChanged" ItemTemplate="{StaticResource solidColor}" ItemsSource="{Binding UsedColors}" />
+				</StackPanel>
+
+			</c:ZoomBox>
+			<!-- Draw Canvas-->
+			<c:ZoomBox x:Name="zoomDrawCanvas" >
+				<Border BorderBrush="White" BorderThickness="3.2">
+					<c:DrawCanvas  x:Name="drawCanvas" />
+				</Border>
+			</c:ZoomBox>
+			<!-- GridSpliter-->
+			<GridSplitter x:Name="gridSplit" />
+			<!-- Main ColorPicker-->
+			<c:ZoomBox x:Name="zoomColorPicker">
+				<local:MainColorPicker x:Name="colorPicker" OnSelectedColor="color_Changed" />
+			</c:ZoomBox>
+		</Grid>
+
+
+	</Grid>
+</local:PadView>
